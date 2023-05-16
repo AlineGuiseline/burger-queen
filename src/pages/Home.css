@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #B3EAE4;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoImage {
+    width: 18rem;
+}
+
+.inputForm {
+    padding: 0.4rem;
+    margin-bottom: 1rem;
+    border: 1.5px solid #DAB5E1;
+    outline:#DAB5E1;
+    border-radius: 30px;
+}
+
+.labelForm {
+    margin-right: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.btnForm {
+    padding: 0.7rem;
+    width: 6rem;
+    background-color: #FA81AA;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.btnForm:hover{
+    opacity: 0.7;
+}
+
+.btnForm:active{
+    opacity: 0.5;
+}
+
+/*
+Tablet: entre 480px e 770px*/
