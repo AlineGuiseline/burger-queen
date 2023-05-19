@@ -1,4 +1,4 @@
-import styles from "./Home.css";
+import "./Home.css";
 import Logo from '../assets/logo.png';
 
 function Home() {
@@ -19,6 +19,7 @@ function Home() {
 
       </form>
       <button className="btnForm">Login</button>
+      
     </section>
   );
 }
