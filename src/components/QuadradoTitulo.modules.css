@@ -1,0 +1,17 @@
+.quadradoTitulo{
+    width: 400px;
+    height: 80px;
+    background-color: #FFE7C3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 30px;
+}
+
+.nomeItemTitulo{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.2em;
+    color: #eb9e2b;
+    text-align: center;
+}

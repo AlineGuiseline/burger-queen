@@ -1,10 +1,13 @@
 .quadrado{
     width: 300px;
-    height: 70px;
+    height: 80px;
     background-color: #DAB5E1;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    border-radius: 30px;
+    cursor: pointer;
 }
 
 .nomeItem{
@@ -17,6 +20,6 @@
 
 .valor{
     font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+    font-weight: 600;
     color: #91529e;
 }
