@@ -1,9 +1,9 @@
-import './Button.modules.css'
+import styles from './Button.module.css'
 
 function Button(props){
     return(
         <div>
-            <button className='btnEstilo'>{props.nome}</button>
+            <button className={styles.btnEstilo}>{props.nome}</button>
         </div>
     )
 }

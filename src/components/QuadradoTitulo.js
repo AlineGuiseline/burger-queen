@@ -1,10 +1,10 @@
-import './QuadradoTitulo.modules.css'
+import styles from './QuadradoTitulo.module.css'
 
 function QuadradoTitulo(props){
     return(
-        <div className='quadradoTitulo'>
+        <div className={styles.quadrado}>
             <div>
-                <p className='nomeItemTitulo'>{props.item}</p>
+                <p className={styles.nomeItemTitulo}>{props.item}</p>
             </div>
         </div>
     )
