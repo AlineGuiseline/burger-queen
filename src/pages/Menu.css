@@ -1,10 +1,13 @@
 :root{
     --Azul:#B3EAE4;
+    --azulEscuro: #358f84;
+    --fonte: 'Montserrat', sans-serif;
 }
 
 .bodyMenu{
     background-color: var(--Azul);
     height: 100vh;
+    width: 100vw;
     display: flex;
     gap:20px;
     padding: 20px;
@@ -16,3 +19,31 @@
     gap:15px;
     margin-bottom:20px;
 }
+
+.colunaTres{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logoMenu{
+    width: 150px;
+}
+
+.pedidos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 90vh;
+    background-color: white;
+    border-radius: 30px;
+}
+
+.resumo{
+    font-size: 1.2em;
+    padding: 20px;
+    font-family: var(--fonte);
+    color: var(--azulEscuro);
+}
+

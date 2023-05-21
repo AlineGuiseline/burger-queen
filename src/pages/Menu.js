@@ -1,5 +1,7 @@
 import Quadrado from "../components/Quadrado"
 import QuadradoTitulo from "../components/QuadradoTitulo"
+import Logo from "../assets/logo.png"
+import Button from "../components/Button"
 import './Menu.css'
 function Menu() {
     return( 
@@ -22,6 +24,16 @@ function Menu() {
                 <Quadrado item='Água 750ml' valor='R$7'/>
                 <Quadrado item='Bebida gaseificada 500ml' valor='R$7'/>
                 <Quadrado item='Bebida gaseificada 750ml' valor='R$10'/>
+            </div>
+
+            <div className="colunaTres">
+                <img className="logoMenu" src={Logo} alt="logoBurguerQueen" />
+                <div className="pedidos">
+                    <p className="resumo">Resumo do Pedido:</p>
+                    <div>
+                    </div>
+                    <Button nome="Enviar para a Cozinha"/>
+                </div>
             </div>
         </section>
     )
