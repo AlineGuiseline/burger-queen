@@ -1,0 +1,22 @@
+.quadrado{
+    width: 300px;
+    height: 70px;
+    background-color: #DAB5E1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nomeItem{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.2em;
+    color: #358f84;
+    text-align: center;
+}
+
+.valor{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #91529e;
+}
