@@ -1,0 +1,17 @@
+.btnEstilo{
+    background-color: pink;
+    width: 100px;
+    height: 30px;
+    border-radius: 30px;
+    color:white;
+    border:none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btnEstilo:hover{
+    opacity: 0.6;
+}
+.borda{
+    background-color: aquamarine;
+}

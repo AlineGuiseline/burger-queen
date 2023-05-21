@@ -6,36 +6,49 @@
 
 body {
     background-color: #B3EAE4;
-}
-
-.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.container {
+    background-color: white;
+    width: 600px;
+    height: 90vh;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .logoImage {
-    width: 18rem;
+    width: 300px;
 }
 
 .inputForm {
     padding: 0.4rem;
-    margin-bottom: 1rem;
+    margin: 5px;
     border: 1.5px solid #DAB5E1;
     outline:#DAB5E1;
     border-radius: 30px;
+    width: 300px;
+    height: 50px;
 }
 
 .labelForm {
-    margin-right: 1rem;
-    display: flex;
-    justify-content: center;
+    margin: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #358f84;
 }
 
 .btnForm {
     padding: 0.7rem;
-    width: 6rem;
+    width: 200px;
+    height: 40px;
+    margin: 10px;
     background-color: #FA81AA;
     border: none;
     border-radius: 30px;
