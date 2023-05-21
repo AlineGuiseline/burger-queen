@@ -1,6 +1,6 @@
 import "./Home.css";
 import Logo from '../assets/logo.png';
-
+import Button from "../components/Button";
 function Home() {
   return (
     <div className='bodyHome'>
@@ -16,7 +16,7 @@ function Home() {
           <input type="password" placeholder="******" className="inputForm" />
           </div>
         </form>
-        <button className="btnForm">Login</button>
+        <Button nome="Login"/>
       
       </section>
     </div>

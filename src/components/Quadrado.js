@@ -1,13 +1,13 @@
-import './Quadrado.modules.css'
+import styles from './Quadrado.module.css'
 
 function Quadrado(props){
     return(
-        <div className='quadrado'>
+        <div className={styles.quadrado}>
             <div>
-                <p className='nomeItem'>{props.item}</p>
+                <p className={styles.nomeItem}>{props.item}</p>
             </div>
             <div>
-                <p className='valor'>{props.valor}</p>
+                <p className={styles.valor}>{props.valor}</p>
             </div>
         </div>
     )
