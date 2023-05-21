@@ -1,0 +1,16 @@
+:root{
+    --Azul:#B3EAE4;
+}
+.bodyMenu{
+    background-color: var(--Azul);
+    height: 100vh;
+    display: flex;
+    gap:20px;
+    padding: 20px;
+}
+.optionsBreakfast, .optionsLunch{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    margin-bottom:20px;
+}

@@ -5,10 +5,10 @@ import Menu from "./pages/Menu";
 function App() {
   return (
     <Router>
-      <div>
+      {/* <div>
         <Link to="/">Home</Link>
         <Link to="/menu">Menu</Link>
-      </div>
+      </div> */}
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/menu" element={<Menu />} />
