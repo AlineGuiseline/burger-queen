@@ -16,6 +16,10 @@
     "plugins": [
         "react"
     ],
-    "rules": {
+    "rules":{
+        "linebreak-style": 0,
+        "react/destructuring-assignment":"off",
+        "react/prop-types": "off",
+        "jsx-a11y/label-has-associated-control": "off"
     }
 }
