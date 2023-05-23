@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './Button.module.css';
 
-function Button(props) {
+
+function Button({ nome }) {
   return (
     <div>
-      <button type="submit" className={styles.btnEstilo}>{props.nome}</button>
+      <button className={styles.btnEstilo} type="submit">{nome}</button>
+
     </div>
   );
 }

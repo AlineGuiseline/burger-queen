@@ -1,16 +1,19 @@
 import React from 'react';
 import styles from './Quadrado.module.css';
 
-function Quadrado(props) {
+
+function Quadrado({ item, valor }) {
   return (
     <div className={styles.quadrado}>
       <div>
-        <p className={styles.nomeItem}>{props.item}</p>
+        <p className={styles.nomeItem}>{item}</p>
       </div>
       <div>
-        <p className={styles.valor}>{props.valor}</p>
+        <p className={styles.valor}>{valor}</p>
+
       </div>
     </div>
   );
 }
+
 export default Quadrado;

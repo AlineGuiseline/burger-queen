@@ -1,11 +1,13 @@
 import React from 'react';
 import styles from './QuadradoTitulo.module.css';
 
-function QuadradoTitulo(props) {
+
+function QuadradoTitulo({ item }) {
   return (
     <div className={styles.quadrado}>
       <div>
-        <p className={styles.nomeItemTitulo}>{props.item}</p>
+        <p className={styles.nomeItemTitulo}>{item}</p>
+
       </div>
     </div>
   );
