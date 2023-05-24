@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './QuadradoTitulo.module.css';
 
-
 function QuadradoTitulo({ item }) {
   return (
     <div className={styles.quadrado}>
