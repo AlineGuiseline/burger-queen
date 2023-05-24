@@ -1,3 +1,4 @@
+
 import { React, useState } from 'react';
 import './Home.css';
 // import { useNavigate } from 'react-router-dom';
@@ -15,6 +16,7 @@ function Home() {
     console.log('funcionou');
     await userLogin(email, password);
   };
+
 
   return (
     <div className="bodyHome">
@@ -38,6 +40,7 @@ function Home() {
             placeholder="●●●●●●"
 
           />
+
         </form>
         <Button name="Login" onClick={(e) => signIn(e)} />
       </section>

@@ -3,6 +3,7 @@ import Quadrado from '../components/Quadrado';
 import QuadradoTitulo from '../components/QuadradoTitulo';
 import Logo from '../assets/logo.png';
 import Button from '../components/Button';
+
 import './Menu.css';
 
 function Menu() {

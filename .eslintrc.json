@@ -16,7 +16,9 @@
     "plugins": [
         "react"
     ],
+
     "rules": {
+
         "linebreak-style": 0,
         "react/destructuring-assignment":"off",
         "react/prop-types": "off",

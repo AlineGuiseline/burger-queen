@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Quadrado.module.css';
 
+
 function Quadrado({ item, valor }) {
   return (
     <div className={styles.quadrado}>
@@ -9,6 +10,7 @@ function Quadrado({ item, valor }) {
       </div>
       <div>
         <p className={styles.valor}>{valor}</p>
+
       </div>
     </div>
   );
