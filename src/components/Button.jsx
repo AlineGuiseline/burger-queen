@@ -4,7 +4,9 @@ import styles from './Button.module.css';
 function Button(props) {
   return (
     <div>
-      <button className={styles.btnEstilo} type="submit" onClick={props.onClick}>{props.name}</button>
+      {/* <button className={styles.btnEstilo} type="submit"
+      onClick={props.onClick}>{props.name}</button> */}
+      <button className={styles.btnEstilo} type="submit">{props.name}</button>
     </div>
   );
 }
