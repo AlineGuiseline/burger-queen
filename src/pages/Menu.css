@@ -4,8 +4,12 @@
     --fonte: 'Montserrat', sans-serif;
 }
 
-.logoMenu{
+.logoMenu,.logoMenuSegunda{
     width: 150px;
+}
+
+.logoMenuSegunda{
+    display: none;
 }
 
 .bodyMenu{
@@ -66,4 +70,32 @@
 .total, .pedidoItem{
     font-family: var(--fonte);
     font-size: 1em;
+}
+
+@media (min-width:800px) {
+    .bodyMenu{
+        flex-direction: row;
+        padding: 20px;
+        justify-content: space-around;
+        height: 100vh;
+    }
+
+    .logoMenu{
+        display: none;
+    }
+
+    .logoMenuSegunda{
+        display: block;
+    }
+
+    .pedidos{
+        max-width: 400px;
+        height: 70vh;
+    }
+
+    .pedidosDesktop{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }

@@ -1,4 +1,3 @@
-
 import { React, useState } from 'react';
 import './Home.css';
 import Logo from '../assets/logo.png';
@@ -8,7 +7,6 @@ import Button from '../components/Button';
 function Home() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
 
   return (
     <div className="bodyHome">
@@ -26,6 +24,7 @@ function Home() {
             <input type="password" placeholder="******" className="inputForm" />
 
           </div> */}
+
           <Input
             label="E-mail"
             value={email}

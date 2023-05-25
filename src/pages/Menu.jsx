@@ -35,16 +35,18 @@ function Menu() {
           <Quadrado item="Bebida gaseificada 750ml" valor="R$10" />
         </div>
       </div>
-      <div className="pedidos">
-        <div className="resumoPedido">
-          <p className="resumo">Resumo do Pedido:</p>
-          <p className="pedidoItem">exemplo de pedido</p>
+      <div className="pedidosDesktop">
+        <img className="logoMenuSegunda" src={Logo} alt="logoBurguerQueen" />
+        <div className="pedidos">
+          <div className="resumoPedido">
+            <p className="resumo">Resumo do Pedido:</p>
+            <p className="pedidoItem">exemplo de pedido</p>
+          </div>
+          <p className="total">Total: R$89,00</p>
+          <Button nome="Enviar para a Cozinha" />
         </div>
-        <p className="total">Total: R$89,00</p>
-        <Button nome="Enviar para a Cozinha" />
       </div>
     </section>
-
   );
 }
 
