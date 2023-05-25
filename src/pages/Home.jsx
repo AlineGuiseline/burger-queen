@@ -35,7 +35,7 @@ function Home() {
     <div className="bodyHome">
       <section className="container">
         <img alt="logo-imagem" src={Logo} className="logoImage" />
-        <form onSubmit={signIn}>
+
           <Input
             label="E-mail"
             value={email}
