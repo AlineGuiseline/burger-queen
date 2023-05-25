@@ -16,7 +16,7 @@
 .container {
     background-color: white;
     width: 600px;
-    height: 90vh;
+    height: 95vh;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
@@ -25,7 +25,7 @@
 }
 
 .logoImage {
-    width: 350px;
+    width: 310px;
 }
 
 .btnForm {
