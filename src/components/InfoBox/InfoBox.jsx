@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './Quadrado.module.css';
+import styles from './InfoBox.module.css';
 
-function Quadrado({ item, valor }) {
+function InfoBox({ item, valor }) {
   return (
     <div className={styles.quadrado}>
       <div>
@@ -9,10 +9,9 @@ function Quadrado({ item, valor }) {
       </div>
       <div>
         <p className={styles.valor}>{valor}</p>
-
       </div>
     </div>
   );
 }
 
-export default Quadrado;
+export default InfoBox;

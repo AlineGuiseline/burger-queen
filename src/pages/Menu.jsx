@@ -1,8 +1,8 @@
 import React from 'react';
-import Quadrado from '../components/Quadrado';
-import QuadradoTitulo from '../components/QuadradoTitulo';
+import InfoBox from '../components/InfoBox/InfoBox';
+import InfoBoxTitle from '../components/InfoBoxTitle/InfoBoxTitle';
 import Logo from '../assets/logo.png';
-import Button from '../components/Button';
+import Button from '../components/Button/Button';
 
 import './Menu.css';
 
@@ -12,11 +12,11 @@ function Menu() {
       <img className="logoMenu" src={Logo} alt="logoBurguerQueen" />
       <div className="mainMenu">
         <div className="optionsBreakfast">
-          <QuadradoTitulo item="Café da Manhã" />
-          <Quadrado item="Café americano" valor="R$5" />
-          <Quadrado item="Café com leite" valor="R$7" />
-          <Quadrado item="Sanduíche de presunto e queijo" valor="R$10" />
-          <Quadrado item="Suco de fruta natural" valor="R$7" />
+          <InfoBoxTitle item="Café da Manhã" />
+          <InfoBox item="Café americano" valor="R$5" />
+          <InfoBox item="Café com leite" valor="R$7" />
+          <InfoBox item="Sanduíche de presunto e queijo" valor="R$10" />
+          <InfoBox item="Suco de fruta natural" valor="R$7" />
           <div className="legenda">
             <p>um item de legenda</p>
             <p>dois itens de legenda</p>
@@ -24,15 +24,15 @@ function Menu() {
           </div>
         </div>
         <div className="optionsLunch">
-          <QuadradoTitulo item="Almoço" />
-          <Quadrado item="Hambúrguer simples" valor="R$10" />
-          <Quadrado item="Hambúrguer duplo" valor="R$15" />
-          <Quadrado item="Batata frita" valor="R$5" />
-          <Quadrado item="Anéis de cebola" valor="R$5" />
-          <Quadrado item="Água 500ml" valor="R$5" />
-          <Quadrado item="Água 750ml" valor="R$7" />
-          <Quadrado item="Bebida gaseificada 500ml" valor="R$7" />
-          <Quadrado item="Bebida gaseificada 750ml" valor="R$10" />
+          <InfoBoxTitle item="Almoço" />
+          <InfoBox item="Hambúrguer simples" valor="R$10" />
+          <InfoBox item="Hambúrguer duplo" valor="R$15" />
+          <InfoBox item="Batata frita" valor="R$5" />
+          <InfoBox item="Anéis de cebola" valor="R$5" />
+          <InfoBox item="Água 500ml" valor="R$5" />
+          <InfoBox item="Água 750ml" valor="R$7" />
+          <InfoBox item="Bebida gaseificada 500ml" valor="R$7" />
+          <InfoBox item="Bebida gaseificada 750ml" valor="R$10" />
         </div>
       </div>
       <div className="pedidosDesktop">
