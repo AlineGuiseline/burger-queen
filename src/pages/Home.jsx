@@ -11,12 +11,6 @@ function Home() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  // const signIn = async (e) => {
-  //   e.preventDefault();
-  //   console.log('funcionou');
-  //   await userLogin(email, password);
-  // };
-
   const signIn = async (e) => {
     e.preventDefault();
     try {
@@ -35,7 +29,7 @@ function Home() {
     <div className="bodyHome">
       <section className="container">
         <img alt="logo-imagem" src={Logo} className="logoImage" />
-
+        <form onSubmit={signIn}>
           <Input
             label="E-mail"
             value={email}
@@ -52,10 +46,8 @@ function Home() {
             type="password"
             placeholder="●●●●●●"
           />
-
           <Button name="Login" />
         </form>
-
       </section>
     </div>
   );
