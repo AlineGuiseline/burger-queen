@@ -1,24 +1,22 @@
 import { React, useState } from 'react';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
-import Logo from '../assets/logo.png';
-import Input from '../components/Input';
-import Button from '../components/Button';
-import userLogin from '../api/users';
+import Logo from '../../assets/logo.png';
+import Input from '../../components/Input/Input';
+import Button from '../../components/Button/Button';
+import userLogin from '../../api/users';
+// import Paragraph from '../../components/Paragraph/Paragraph';
+import Error from '../../Errors/Errors';
 
 function Home() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
-  // const signIn = async (e) => {
-  //   e.preventDefault();
-  //   console.log('funcionou');
-  //   await userLogin(email, password);
-  // };
+  const [erro, setErro] = useState(null);
 
   const signIn = async (e) => {
     e.preventDefault();
+    setErro('');
     try {
       const loggedUser = await userLogin(email, password);
       console.log(loggedUser);
@@ -26,8 +24,8 @@ function Home() {
       if (loggedUser.user.role === 'admin') {
         navigate('/menu');
       }
-    } catch {
-      console.log('Algo deu errado');
+    } catch (erro) {
+      setErro(Error(erro.message));
     }
   };
 
@@ -35,7 +33,7 @@ function Home() {
     <div className="bodyHome">
       <section className="container">
         <img alt="logo-imagem" src={Logo} className="logoImage" />
-
+        <form onSubmit={signIn}>
           <Input
             label="E-mail"
             value={email}
@@ -52,10 +50,11 @@ function Home() {
             type="password"
             placeholder="●●●●●●"
           />
-
+          <div className="msgErroLogin">
+            {erro && <Error message={erro} /> }
+          </div>
           <Button name="Login" />
         </form>
-
       </section>
     </div>
   );
