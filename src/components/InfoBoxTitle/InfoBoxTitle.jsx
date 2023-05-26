@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './QuadradoTitulo.module.css';
+import styles from './InfoBoxTitle.module.css';
 
 function QuadradoTitulo({ item }) {
   return (
