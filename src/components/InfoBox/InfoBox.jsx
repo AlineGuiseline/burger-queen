@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './InfoBox.module.css';
 
-function InfoBox({ item, valor }) {
+function InfoBox({ item, valor, cor }) {
   return (
-    <div className={styles.quadrado}>
+    <div style={{ backgroundColor: cor }} className={styles.quadrado}>
       <div>
         <p className={styles.nomeItem}>{item}</p>
       </div>
