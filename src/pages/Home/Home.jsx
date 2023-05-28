@@ -24,8 +24,8 @@ function Home() {
       if (loggedUser.user.role === 'admin') {
         navigate('/menu');
       }
-    } catch (erro) {
-      setErro(Error(erro.message));
+    } catch (error) {
+      setErro(Error(error.message));
     }
   };
 
@@ -33,7 +33,7 @@ function Home() {
     <div className="bodyHome">
       <section className="container">
         <img alt="logo-imagem" src={Logo} className="logoImage" />
-        <form onSubmit={signIn}>
+        <form className="form" onSubmit={signIn}>
           <Input
             label="E-mail"
             value={email}

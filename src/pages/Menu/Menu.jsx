@@ -1,8 +1,8 @@
 import React from 'react';
-import InfoBox from '../components/InfoBox/InfoBox';
-import InfoBoxTitle from '../components/InfoBoxTitle/InfoBoxTitle';
-import Logo from '../assets/logo.png';
-import Button from '../components/Button/Button';
+import InfoBox from '../../components/InfoBox/InfoBox';
+import InfoBoxTitle from '../../components/InfoBoxTitle/InfoBoxTitle';
+import Logo from '../../assets/logo.png';
+import Button from '../../components/Button/Button';
 
 import './Menu.css';
 
@@ -43,7 +43,7 @@ function Menu() {
             <p className="pedidoItem">exemplo de pedido</p>
           </div>
           <p className="total">Total: R$89,00</p>
-          <Button nome="Enviar para a Cozinha" />
+          <Button name="Enviar para a Cozinha" />
         </div>
       </div>
     </section>

@@ -7,6 +7,7 @@
     border:none;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
+    margin-top: 10px;
 }
 
 .btnEstilo:hover{
