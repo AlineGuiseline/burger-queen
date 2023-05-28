@@ -5,7 +5,7 @@ import Logo from '../../assets/logo.png';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import userLogin from '../../api/users';
-// import Paragraph from '../../components/Paragraph/Paragraph';
+import Paragraph from '../../components/Paragraph/Paragraph';
 import Error from '../../Errors/Errors';
 
 function Home() {
@@ -50,9 +50,9 @@ function Home() {
             type="password"
             placeholder="●●●●●●"
           />
-          <div className="msgErroLogin">
-            {erro && <Error message={erro} /> }
-          </div>
+          <Paragraph
+            text={erro && <Error message={erro} />}
+          />
           <Button name="Login" />
         </form>
       </section>
