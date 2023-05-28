@@ -28,23 +28,19 @@
     width: 310px;
 }
 
-.btnForm {
-    padding: 0.7rem;
-    width: 200px;
-    height: 40px;
-    margin: 10px;
-    background-color: #FA81AA;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.btnForm:hover{
-    opacity: 0.7;
-}
-
-.btnForm:active{
-    opacity: 0.5;
+.msgErroLogin{
+    font-family: 'Montserrat', sans-serif;
+    color: #358f84;
+    font-weight: 500;
+    text-align: center;
+    margin:5px;
+    font-size: 0.9em;
 }
 
 /*

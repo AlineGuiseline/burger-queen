@@ -7,7 +7,7 @@ export default function Error({ message }) {
     case 'Email format is invalid':
       return 'Formato de email inválido';
     default:
-      return 'Ocorreu algum erro';
+      return 'Ocorreu algum erro, confira seus dados.';
   }
 }
 
