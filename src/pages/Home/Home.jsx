@@ -20,6 +20,8 @@ function Home() {
     try {
       const loggedUser = await userLogin(email, password);
       console.log(loggedUser);
+      const jsonData = await loggedUser.json();
+      localStorage.setItem('token', jsonData.accessToken);
 
       if (loggedUser.user.role === 'admin') {
         navigate('/menu');
@@ -53,7 +55,7 @@ function Home() {
           <Paragraph
             text={erro && <Error message={erro} />}
           />
-          <Button name="Login" />
+          <Button> Entrar </Button>
         </form>
       </section>
     </div>

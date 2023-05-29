@@ -1,14 +1,25 @@
-import React from 'react';
+import { React, useEffect } from 'react';
 import InfoBox from '../../components/InfoBox/InfoBox';
 import InfoBoxTitle from '../../components/InfoBoxTitle/InfoBoxTitle';
 import Logo from '../../assets/logo.png';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
+import getProducts from '../../api/products';
+
 // import Paragraph from '../../components/Paragraph/Paragraph';
 
 import './Menu.css';
 
 function Menu() {
+  useEffect(() => {
+    async function fetchData() {
+      const token = localStorage.getItem('token');
+      const response = await getProducts(token);
+      const listaProdutos = await response.json();
+      console.log(listaProdutos);
+    }
+    fetchData();
+  });
   return (
     <section className="bodyMenu">
       <img className="logoMenu" src={Logo} alt="logoBurguerQueen" />
@@ -52,10 +63,12 @@ function Menu() {
               name="nome"
               placeholder="Nome do Cliente"
             />
-            <p className="pedidoItem">exemplo de pedido</p>
+            <div className="pedidoItem">
+              <p>Exemplo</p>
+            </div>
           </div>
           <p className="total">Total: R$89,00</p>
-          <Button name="Enviar para a Cozinha" />
+          <Button> Enviar para a Cozinha </Button>
         </div>
       </div>
     </section>
