@@ -11,6 +11,8 @@ import getProducts from '../../api/products';
 import './Menu.css';
 
 function Menu() {
+  // const [products, setProducts] = useState('');
+
   useEffect(() => {
     async function fetchData() {
       const token = localStorage.getItem('token');
@@ -26,6 +28,14 @@ function Menu() {
       <div className="mainMenu">
         <div className="optionsBreakfast">
           <InfoBoxTitle item="Café da Manhã" />
+          {/* <ul>
+            {products.map((product) => (
+              <div key={product.id}>
+                <p>{product.name}</p>
+                <p>{product.value}</p>
+              </div>
+            ))}
+          </ul> */}
           <InfoBox item="Café americano" valor="R$5" />
           <InfoBox item="Café com leite" valor="R$7" />
           <InfoBox item="Sanduíche de presunto e queijo" valor="R$10" />

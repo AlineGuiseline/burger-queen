@@ -7,12 +7,18 @@ const getProducts = async (token) => fetch(`${API_URL}/products`, {
     Authorization: `Bearer ${token}`,
   },
 });
-//   if (response.status >= 400 && response.status <= 500) {
-//     console.log(response);
-//     // redirecionar para tela de login
-//     throw new Error('Realize o login novamente');
-//   }
-//   return response.json();
+
+/*
+const getProducts = (token) => {
+  return fetch(`${API_URL}/products`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+*/
 
 export default getProducts;
 
