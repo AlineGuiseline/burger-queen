@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
     "extends": [
         "plugin:react/recommended",
@@ -18,7 +19,6 @@
     ],
 
     "rules": {
-
         "linebreak-style": 0,
         "react/destructuring-assignment":"off",
         "react/prop-types": "off",

@@ -95,6 +95,15 @@
     font-size: 1em;
 }
 
+.pedidoItem{
+    border: 1px solid #358f84;
+    padding: 15px;
+    border-radius: 30px;
+    width: 350px;
+    height: 50px;
+    margin: 5px;
+}
+
 @media (min-width:800px) {
     .bodyMenu{
         flex-direction: row;

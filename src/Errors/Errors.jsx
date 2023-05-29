@@ -10,5 +10,3 @@ export default function Error({ message }) {
       return 'Ocorreu algum erro, confira seus dados.';
   }
 }
-
-console.log(Error);
