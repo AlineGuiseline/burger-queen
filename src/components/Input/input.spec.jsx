@@ -6,13 +6,13 @@ import Input from './Input';
 it('deve renderizar o campo corretamente com um valor e disparar uma ação ao modificar', () => {
   const onChange = jest.fn();
   render(
-    <Input valor="valorDigitado" onChange={onChange} />,
+    <Input value="valorDigitado" onChange={onChange} />,
   );
-  screen.getByDisplayValue('valorDigitado');
-  expect(Input).toBeInTheDocument();
+  const input = screen.getByDisplayValue('valorDigitado');
+  expect(input).toBeInTheDocument();
 
   const digitando = 'Novo Valor';
-  userEvent.type(Input, digitando);
+  userEvent.type(input, digitando);
   expect(onChange).toHaveBeenCalled(digitando.length);
   expect(onChange).toBeCalledWith(digitando);
 });

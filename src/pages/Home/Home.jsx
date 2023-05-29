@@ -23,7 +23,8 @@ function Home() {
       const jsonData = await loggedUser.json();
       localStorage.setItem('token', jsonData.accessToken);
 
-      if (loggedUser.user.role === 'admin') {
+      // if (loggedUser.user.role === 'admin') {
+      if (loggedUser.status === 200) {
         navigate('/menu');
       }
     } catch (error) {
