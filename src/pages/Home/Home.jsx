@@ -19,6 +19,7 @@ function Home() {
     setErro('');
     try {
       const loggedUser = await userLogin(email, password);
+      // eslint-disable-next-line no-console
       console.log(loggedUser);
       const jsonData = await loggedUser.json();
       localStorage.setItem('token', jsonData.accessToken);
