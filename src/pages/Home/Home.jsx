@@ -39,18 +39,20 @@ function Home() {
         <form className="form" onSubmit={signIn}>
           <Input
             label="E-mail"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            name={email}
             type="email"
+            value={email}
+            // onChange={(e) => setEmail(e.target.value)}
+            whenChanged={(value) => setEmail(value)}
+            name={email}
             placeholder="email@exemplo.com"
           />
           <Input
             label="Senha"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            name={password}
             type="password"
+            value={password}
+            // onChange={(e) => setPassword(e.target.value)}
+            whenChanged={(value) => setPassword(value)}
+            name={password}
             placeholder="●●●●●●"
           />
           <Paragraph
