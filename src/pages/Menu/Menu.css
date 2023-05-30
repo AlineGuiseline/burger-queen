@@ -24,43 +24,16 @@
 
 .mainMenu{
     display: flex;
+    flex-direction: column;
     gap:20px;
 }
 
-.optionsBreakfast, .optionsLunch{
+.options{
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap:15px;
 }
-
-.legenda{
-    width: 250px;
-    height: 250px;
-    background-color: white;
-    border-radius: 30px;
-    padding: 10px;
-    font-family: var(--fonte);
-    text-align: center;
-}
-
-.legBurgers, .legAcompanhamentos, .legBebidas{
-    margin-top:10px;
-    font-weight: 600;
-}
-
-.legBurgers{
-    color:#FD7FAA;
-}
-
-.legAcompanhamentos{
-    color:#FFA7C5
-}
-
-.legBebidas{
-    color:#FFCCDD
-}
-
 
 .pedidos{
     display: flex;

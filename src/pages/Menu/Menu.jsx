@@ -22,27 +22,23 @@ function Menu() {
     }
     fetchData();
   }, []);
+
   return (
     <section className="bodyMenu">
       <img className="logoMenu" src={Logo} alt="logoBurguerQueen" />
+
       <div className="mainMenu">
-        <div className="optionsBreakfast">
+        <div className="options">
           <InfoBoxTitle item="Café da Manhã" />
-          <ul>
-            {products.map((product) => (
-              <InfoBox key={product.id} item={product.name} valor={product.price} />
-            ))}
-          </ul>
-          <div className="legenda">
-            <p className="legBurgers">Sanduíches</p>
-            <p className="legAcompanhamentos">Acompanhamentos</p>
-            <p className="legBebidas">Bebidas</p>
-          </div>
-        </div>
-        <div className="optionsLunch">
           <InfoBoxTitle item="Almoço" />
         </div>
+
+        {products.map((product) => (
+          <InfoBox key={product.id} item={product.name} valor={product.price} />
+        ))}
+
       </div>
+
       <div className="pedidosDesktop">
         <img className="logoMenuSegunda" src={Logo} alt="logoBurguerQueen" />
         <div className="pedidos">
