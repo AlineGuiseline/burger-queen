@@ -6,6 +6,7 @@
     justify-content: space-around;
     align-items: center;
     border-radius: 30px;
+    cursor: pointer;
 }
 
 .nomeItemTitulo{
