@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Input from './Input';
@@ -62,7 +63,7 @@ it('deve renderizar o campo corretamente com um valor e disparar uma ação ao m
 
   const digitando = 'Novo Valor';
   userEvent.type(input, digitando);
-  expect(onChange).toHaveBeenCalled(digitando.length);
+  expect(onChange).toHaveBeenCalledTimes(digitando.length);
   expect(onChange).toBeCalledWith(digitando);
 });
 */
