@@ -19,13 +19,10 @@ function Home() {
     setErro('');
     try {
       const loggedUser = await userLogin(email, password);
-      // eslint-disable-next-line no-console
       console.log(loggedUser);
-      const jsonData = await loggedUser.json();
-      localStorage.setItem('token', jsonData.accessToken);
+      localStorage.setItem('token', loggedUser.accessToken);
 
-      // if (loggedUser.user.role === 'admin') {
-      if (loggedUser.status === 200) {
+      if (loggedUser.user.role === 'admin') {
         navigate('/menu');
       }
     } catch (error) {
