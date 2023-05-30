@@ -6,7 +6,6 @@ function QuadradoTitulo({ item }) {
     <div className={styles.quadrado}>
       <div>
         <p className={styles.nomeItemTitulo}>{item}</p>
-
       </div>
     </div>
   );

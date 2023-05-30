@@ -1,5 +1,4 @@
 const API_URL = 'https://burger-queen-api-mock-five.vercel.app';
-// const API_URL = 'http://localhost:8080';
 /*
 const userLogin = async (email, password) => {
   const response = await fetch(`${API_URL}/login`, {
@@ -20,6 +19,7 @@ const userLogin = async (email, password) => {
   return response.json();
 };
 */
+
 const userLogin = (email, password) => fetch(`${API_URL}/login`, {
   method: 'POST',
   headers: {
