@@ -1,6 +1,6 @@
 const API_URL = 'https://burger-queen-api-mock-five.vercel.app';
 
-const getProducts = async (token) => fetch(`${API_URL}/products`, {
+const getProducts = (token) => fetch(`${API_URL}/products`, {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json',
