@@ -19,13 +19,10 @@ function Home() {
     setErro('');
     try {
       const loggedUser = await userLogin(email, password);
-      // eslint-disable-next-line no-console
       console.log(loggedUser);
-      const jsonData = await loggedUser.json();
-      localStorage.setItem('token', jsonData.accessToken);
+      localStorage.setItem('token', loggedUser.accessToken);
 
-      // if (loggedUser.user.role === 'admin') {
-      if (loggedUser.status === 200) {
+      if (loggedUser.user.role === 'admin') {
         navigate('/menu');
       }
     } catch (error) {
@@ -40,18 +37,20 @@ function Home() {
         <form className="form" onSubmit={signIn}>
           <Input
             label="E-mail"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            name={email}
             type="email"
+            value={email}
+            // onChange={(e) => setEmail(e.target.value)}
+            whenChanged={(value) => setEmail(value)}
+            name={email}
             placeholder="email@exemplo.com"
           />
           <Input
             label="Senha"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            name={password}
             type="password"
+            value={password}
+            // onChange={(e) => setPassword(e.target.value)}
+            whenChanged={(value) => setPassword(value)}
+            name={password}
             placeholder="●●●●●●"
           />
           <Paragraph
