@@ -18,6 +18,7 @@ function Menu() {
       const token = localStorage.getItem('token');
       const response = await getProducts(token);
       const listaProdutos = await response.json();
+      // eslint-disable-next-line no-console
       console.log(listaProdutos);
     }
     fetchData();

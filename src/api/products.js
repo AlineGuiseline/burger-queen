@@ -8,6 +8,7 @@ const getProducts = async (token) => fetch(`${API_URL}/products`, {
   },
 });
 
+export default getProducts;
 /*
 const getProducts = (token) => {
   return fetch(`${API_URL}/products`, {
@@ -19,8 +20,5 @@ const getProducts = (token) => {
   });
 };
 */
-
-export default getProducts;
-
 // achar um jeito de armazenar o token
 // try e catch para capturar o erro na tela
