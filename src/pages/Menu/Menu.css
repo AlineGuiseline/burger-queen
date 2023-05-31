@@ -29,10 +29,14 @@
 }
 
 .options{
-    display: flex;
+    /* display: flex;
     align-items: center;
     justify-content: center;
-    gap:15px;
+    gap:15px; */
+    display: grid;
+    grid-template-columns: 200px 200px;
+    row-gap: 15%;
+    column-gap: 25%;
 }
 
 .pedidos{
@@ -46,6 +50,14 @@
     border-radius: 30px;
     padding: 10px;
     margin-bottom: 20px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    row-gap: 3%;
+    column-gap: 25%;
+    margin-top: 7%;
 }
 
 .resumoTitulo{

@@ -29,14 +29,17 @@ function Menu() {
 
       <div className="mainMenu">
         <div className="options">
-          <InfoBoxTitle item="Café da Manhã" />
+          <InfoBoxTitle item="Café da manhã" />
           <InfoBoxTitle item="Almoço" />
+          <InfoBoxTitle item="Bebidas" />
+          <InfoBoxTitle item="Sobremesas" />
         </div>
 
-        {products.map((product) => (
-          <InfoBox key={product.id} item={product.name} valor={product.price} />
-        ))}
-
+        <div className="products">
+          {products.map((product) => (
+            <InfoBox key={product.id} item={product.name} valor={product.price} />
+          ))}
+        </div>
       </div>
 
       <div className="pedidosDesktop">
