@@ -39,7 +39,6 @@ function Home() {
             label="E-mail"
             type="email"
             value={email}
-            // onChange={(e) => setEmail(e.target.value)}
             whenChanged={(value) => setEmail(value)}
             name={email}
             placeholder="email@exemplo.com"
@@ -48,7 +47,6 @@ function Home() {
             label="Senha"
             type="password"
             value={password}
-            // onChange={(e) => setPassword(e.target.value)}
             whenChanged={(value) => setPassword(value)}
             name={password}
             placeholder="●●●●●●"
