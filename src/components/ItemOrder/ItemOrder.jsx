@@ -6,23 +6,22 @@ function ItemOrder(props) {
     <section>
       <ul className={styles.lista}>
         {props.orderItem.map((item) => (
+
           <li className={styles.product}>
             <p>{item.name}</p>
-            <p>{item.price}</p>
+            <p>
+            $
+            {item.price}
+            </p>
             <div className={styles.add}>
               <button className={styles.miniButton} type="submit">-</button>
-              <p>1</p>
+              <p>{item.number}</p>
               <button className={styles.miniButton} type="submit">+</button>
             </div>
           </li>
         ))}
       </ul>
-
-      <p className={styles.total}>
-        Total: R$
-        <span> </span>
-
-      </p>
+      <p className={styles.total}>Total: $</p>
     </section>
   );
 }
