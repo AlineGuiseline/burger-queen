@@ -60,16 +60,6 @@ function Menu() {
               // name="nome"
               placeholder="Nome do Cliente"
             />
-            {/* <ItemOrder
-              item="Item"
-              price="8,00"
-              number="2"
-            />
-            <ItemOrder
-              item="Item com nome comprido"
-              price="8,00"
-              number="2"
-            /> */}
             <ItemOrder orderItem={orderItem} />
           </div>
           <Button> Enviar para a Cozinha </Button>

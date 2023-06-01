@@ -1,14 +1,13 @@
 .quadrado{
-    width: 250px;
-    height: 80px;
+    width: 280px;
+    height: 100px;
     background-color: #DAB5E1;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     border-radius: 30px;
     padding: 5px;
-    cursor: pointer;
+    gap:5px;
 }
 
 .nomeItem{
@@ -17,10 +16,24 @@
     font-size: 1.2em;
     color: #358f84;
     text-align: center;
+    width: 120px;
 }
 
 .valor{
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     color: #91529e;
+}
+
+.button{
+    font-family:'Montserrat', sans-serif;
+    font-size: 1.5em;
+    font-weight: 400;
+    border: none;
+    background-color: #91529e;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
 }
