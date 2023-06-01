@@ -22,7 +22,10 @@ function ItemOrder(props) {
         {props.orderItem.map((item) => (
           <li>
             <h4>{item.name}</h4>
-            <p>{item.price}</p>
+            <p>
+              $
+              {item.price}
+            </p>
             <button type="submit">-</button>
             <p>{item.number}</p>
             <button type="submit">+</button>
@@ -30,7 +33,7 @@ function ItemOrder(props) {
         ))}
       </ul>
 
-      <h3>Total: R$</h3>
+      <h3>Total: $</h3>
     </section>
   );
 }
