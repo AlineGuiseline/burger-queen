@@ -20,7 +20,10 @@ function InfoBox(props) {
   return (
     <li className={styles.quadrado}>
       <p className={styles.nomeItem}>{props.item}</p>
-      <p className={styles.valor}>{props.valor}</p>
+      <p className={styles.valor}>
+        $
+        {props.valor}
+      </p>
       <button type="submit" onClick={props.onClick}>+</button>
     </li>
   );
