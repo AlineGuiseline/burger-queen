@@ -24,7 +24,7 @@ function ItemOrder(props) {
             <h4>{item.name}</h4>
             <p>{item.price}</p>
             <button type="submit">-</button>
-            <p>1</p>
+            <p>{item.number}</p>
             <button type="submit">+</button>
           </li>
         ))}
