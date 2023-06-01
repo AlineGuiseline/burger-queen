@@ -51,8 +51,16 @@ function Menu() {
               // name="nome"
               placeholder="Nome do Cliente"
             />
-            <ItemOrder> Exemplo </ItemOrder>
-            <ItemOrder> Pedido </ItemOrder>
+            <ItemOrder
+              item="Item"
+              price="8,00"
+              number="2"
+            />
+            <ItemOrder
+              item="Item com nome comprido"
+              price="8,00"
+              number="2"
+            />
           </div>
           <p className="total">Total: R$89,00</p>
           <Button> Enviar para a Cozinha </Button>
