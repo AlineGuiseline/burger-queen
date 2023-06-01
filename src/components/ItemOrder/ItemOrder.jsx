@@ -1,39 +1,27 @@
 import React from 'react';
-// import styles from './ItemOrder.module.css';
-
-// function ItemOrder(props) {
-//   return (
-//     <div className={styles.container}>
-//       <p>{props.item}</p>
-//       <p>{props.price}</p>
-//       <p>{props.number}</p>
-//       <div className={styles.icones}>
-//         <button type="submit" className={styles.adicionar}>+</button>
-//         <button type="submit" className={styles.retirar}>-</button>
-//       </div>
-//     </div>
-//   );
-// }
+import styles from './ItemOrder.module.css';
 
 function ItemOrder(props) {
   return (
     <section>
-      <ul>
+      <ul className={styles.lista}>
         {props.orderItem.map((item) => (
-          <li>
-            <h4>{item.name}</h4>
+
+          <li className={styles.product}>
+            <p>{item.name}</p>
             <p>
-              $
-              {item.price}
+            $
+            {item.price}
             </p>
-            <button type="submit">-</button>
-            <p>{item.number}</p>
-            <button type="submit">+</button>
+            <div className={styles.add}>
+              <button className={styles.miniButton} type="submit">-</button>
+              <p>{item.number}</p>
+              <button className={styles.miniButton} type="submit">+</button>
+            </div>
           </li>
         ))}
       </ul>
-
-      <h3>Total: $</h3>
+      <p className={styles.total}>Total: $</p>
     </section>
   );
 }
