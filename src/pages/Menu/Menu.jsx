@@ -5,6 +5,7 @@ import Logo from '../../assets/logo.png';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import getProducts from '../../api/products';
+import ItemOrder from '../../components/ItemOrder/ItemOrder';
 
 // import Paragraph from '../../components/Paragraph/Paragraph';
 
@@ -26,7 +27,6 @@ function Menu() {
   return (
     <section className="bodyMenu">
       <img className="logoMenu" src={Logo} alt="logoBurguerQueen" />
-
       <div className="mainMenu">
         <div className="options">
           <InfoBoxTitle item="Café da Manhã" />
@@ -47,13 +47,12 @@ function Menu() {
             <Input
               type="text"
               // value="nome"
-              // onChange={props.onChange}
-              name="nome"
+              // onChange={whenTyped}
+              // name="nome"
               placeholder="Nome do Cliente"
             />
-            <div className="pedidoItem">
-              <p>Exemplo</p>
-            </div>
+            <ItemOrder> Exemplo </ItemOrder>
+            <ItemOrder> Pedido </ItemOrder>
           </div>
           <p className="total">Total: R$89,00</p>
           <Button> Enviar para a Cozinha </Button>
