@@ -14,6 +14,12 @@ import './Menu.css';
 function Menu() {
   const [products, setProducts] = useState([]);
   const [orderItem, setOrderItem] = useState([]);
+  const [filterCategory, setFilterCategory] = useState('');
+  const [showProducts, setShowProducts] = useState(false);
+  // criar estado para armazenar produtos filtrados CHECK
+  // função que recebe como parâmetro o tipo de produto -- faz o filtro
+  // adicionar o onClick com a função da filtragem CHECK
+  // faz o map nos produtos selecionados
 
   useEffect(() => {
     async function fetchData() {
@@ -25,19 +31,29 @@ function Menu() {
     fetchData();
   }, []);
 
+  const filteredCategory = (categoria) => {
+    setFilterCategory(categoria);
+    setShowProducts(true);
+  };
+
+  const filteredProducts = filterCategory
+    ? products.filter((product) => product.type === filterCategory)
+    : products;
+
   return (
     <section className="bodyMenu">
       <img className="logoMenu" src={Logo} alt="logoBurguerQueen" />
       <div className="mainMenu">
         <div className="options">
-          <InfoBoxTitle item="Café da manhã" />
-          <InfoBoxTitle item="Almoço" />
-          <InfoBoxTitle item="Bebidas" />
-          <InfoBoxTitle item="Sobremesas" />
+          <InfoBoxTitle item="Café da manhã" onClick={() => filteredCategory('Café da manhã')} />
+          <InfoBoxTitle item="Almoço" onClick={() => filteredCategory('Almoço')} />
+          <InfoBoxTitle item="Bebidas" onClick={() => filteredCategory('Bebidas')} />
+          <InfoBoxTitle item="Sobremesas" onClick={() => filteredCategory('Sobremesas')} />
         </div>
 
         <div className="products">
-          {products.map((product) => (
+          {showProducts
+          && filteredProducts.map((product) => (
             <InfoBox
               key={product.id}
               item={product.name}
@@ -60,16 +76,6 @@ function Menu() {
               // name="nome"
               placeholder="Nome do Cliente"
             />
-            {/* <ItemOrder
-              item="Item"
-              price="8,00"
-              number="2"
-            />
-            <ItemOrder
-              item="Item com nome comprido"
-              price="8,00"
-              number="2"
-            /> */}
             <ItemOrder orderItem={orderItem} />
           </div>
           <Button> Enviar para a Cozinha </Button>

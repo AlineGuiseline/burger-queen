@@ -1,12 +1,10 @@
 import React from 'react';
 import styles from './InfoBoxTitle.module.css';
 
-function QuadradoTitulo({ item }) {
+function QuadradoTitulo(props) {
   return (
     <div className={styles.quadrado}>
-      <div>
-        <p className={styles.nomeItemTitulo}>{item}</p>
-      </div>
+      <button type="submit" onClick={props.onClick} className={styles.nomeItemTitulo}>{props.item}</button>
     </div>
   );
 }
