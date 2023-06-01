@@ -8,10 +8,10 @@ function ItemOrder(props) {
         {props.orderItem.map((item) => (
 
           <li className={styles.product}>
-            <p>{item.name}</p>
+            <p className={styles.name}>{item.name}</p>
             <p>
-            $
-            {item.price}
+              $
+              {item.price}
             </p>
             <div className={styles.add}>
               <button className={styles.miniButton} type="submit">-</button>

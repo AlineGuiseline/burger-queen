@@ -29,3 +29,8 @@
     font-size: 1.3em;
     color: #91529e;
 }
+
+.name{
+    width: 120px;
+    text-align: center;
+}
