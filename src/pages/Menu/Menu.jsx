@@ -13,6 +13,7 @@ import './Menu.css';
 
 function Menu() {
   const [products, setProducts] = useState([]);
+  const [orderItem, setOrderItem] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -37,7 +38,12 @@ function Menu() {
 
         <div className="products">
           {products.map((product) => (
-            <InfoBox key={product.id} item={product.name} valor={product.price} />
+            <InfoBox
+              key={product.id}
+              item={product.name}
+              valor={product.price}
+              onClick={() => setOrderItem((prevState) => [...prevState, product])}
+            />
           ))}
         </div>
       </div>
@@ -54,7 +60,7 @@ function Menu() {
               // name="nome"
               placeholder="Nome do Cliente"
             />
-            <ItemOrder
+            {/* <ItemOrder
               item="Item"
               price="8,00"
               number="2"
@@ -63,9 +69,9 @@ function Menu() {
               item="Item com nome comprido"
               price="8,00"
               number="2"
-            />
+            /> */}
+            <ItemOrder orderItem={orderItem} />
           </div>
-          <p className="total">Total: R$89,00</p>
           <Button> Enviar para a Cozinha </Button>
         </div>
       </div>
