@@ -19,24 +19,33 @@ it('deve redirecionar admins à tela de Menu ao autenticar com sucesso', async (
     },
   };
   userLogin.mockResolvedValueOnce(mockUserLogin); // o que a função vai devolver
-
   const mockNavigate = jest.fn();
   useNavigate.mockReturnValue(mockNavigate);
 
-  render(
-    <Home />,
-  );
+  render(<Home />);
+
   const email = screen.getByPlaceholderText('email@exemplo.com');
   const password = screen.getByPlaceholderText('●●●●●●');
   const btn = screen.getByText('Entrar');
-  userEvent.type(email, 'teste@teste.com');
-  userEvent.type(password, 'senha123');
 
+  // coloca as ações de digitar e clicar dentro de um waitFor
   await waitFor(() => {
+    userEvent.type(email, 'teste@teste.com');
+    userEvent.type(password, 'senha123');
     userEvent.click(btn);
   });
 
-  await waitFor(() => {
-    expect(userLogin).toHaveBeenCalledTimes(1);
-  });
+  // como o userLogin chama o setErro, vamos colocar mais um waitFor aqui
+  // depois disso, podemos seguir com todos os expects
+  await waitFor(() => expect(userLogin).toHaveBeenCalledTimes(1));
+  // verifica se o userLogin recebeu o que foi digitado no input
+  expect(userLogin).toHaveBeenCalledWith('teste@teste.com', 'senha123');
+
+  // verifica se o setItem foi chamado 1x e com o retorno do userLogin (mockUserLogin)
+  expect(setItem).toHaveBeenCalledTimes(1);
+  expect(setItem).toHaveBeenCalledWith('token', mockUserLogin.accessToken);
+
+  // verifica se o mockNavigatae foi chamado 1x e redirecionou pra tela de menu
+  expect(mockNavigate).toHaveBeenCalledTimes(1);
+  expect(mockNavigate).toHaveBeenCalledWith('/menu');
 });

@@ -17,9 +17,9 @@ function Menu() {
   const [filterCategory, setFilterCategory] = useState('');
   const [showProducts, setShowProducts] = useState(false);
   // criar estado para armazenar produtos filtrados CHECK
-  // função que recebe como parâmetro o tipo de produto -- faz o filtro
+  // função que recebe como parâmetro o tipo de produto -- faz o filtro CHECK
   // adicionar o onClick com a função da filtragem CHECK
-  // faz o map nos produtos selecionados
+  // faz o map nos produtos selecionados CHECK
 
   useEffect(() => {
     async function fetchData() {
@@ -39,6 +39,30 @@ function Menu() {
   const filteredProducts = filterCategory
     ? products.filter((product) => product.type === filterCategory)
     : products;
+
+  const quantityControl = (item, children) => {
+    const getIndex = orderItem.findIndex((order) => order.id === item.id);
+    const newOrder = [...orderItem];
+
+    if (children === '-') {
+      if (item.quantity <= 1) {
+        newOrder.splice(getIndex, 1);
+        setOrderItem(newOrder);
+      } else {
+        const specificItem = newOrder[getIndex];
+        const valueChange = specificItem.quantity - 1;
+        newOrder[getIndex].quantity = valueChange;
+        setOrderItem(newOrder);
+      }
+    }
+
+    if (children === '+') {
+      const specificItem = newOrder[getIndex];
+      const quantityChange = specificItem.quantity + 1;
+      newOrder[getIndex].quantity = quantityChange;
+      setOrderItem(newOrder);
+    }
+  };
 
   return (
     <section className="bodyMenu">
@@ -76,7 +100,10 @@ function Menu() {
               // name="nome"
               placeholder="Nome do Cliente"
             />
-            <ItemOrder orderItem={orderItem} />
+            <ItemOrder
+              orderItem={orderItem}
+              onClickQuantity={quantityControl}
+            />
           </div>
           <Button> Enviar para a Cozinha </Button>
         </div>
