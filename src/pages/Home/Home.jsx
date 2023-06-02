@@ -7,6 +7,7 @@ import Button from '../../components/Button/Button';
 import userLogin from '../../api/users';
 import Paragraph from '../../components/Paragraph/Paragraph';
 import Error from '../../Errors/Errors';
+import { setItem } from '../../storage/localStorage';
 
 function Home() {
   const [email, setEmail] = useState('');
@@ -20,12 +21,13 @@ function Home() {
     try {
       const loggedUser = await userLogin(email, password);
       console.log(loggedUser);
-      localStorage.setItem('token', loggedUser.accessToken);
+      setItem('token', loggedUser.accessToken);
 
       if (loggedUser.user.role === 'admin') {
         navigate('/menu');
       }
     } catch (error) {
+      console.log(error);
       setErro(Error(error.message));
     }
   };
