@@ -6,17 +6,13 @@ function ItemOrder(props) {
     <section>
       <ul className={styles.lista}>
         {props.orderItem.map((item) => (
-
-          <li className={styles.product}>
-            <p>{item.name}</p>
-            <p>
-              $
-              {item.price}
-            </p>
+          <li className={styles.product} key={item.id}>
+            <p className={styles.name}>{item.name}</p>
+            <p>{`R$${item.price * item.quantity}`}</p>
             <div className={styles.add}>
-              <button className={styles.miniButton} type="submit">-</button>
-              <p>{item.number}</p>
-              <button className={styles.miniButton} type="submit">+</button>
+              <button className={styles.miniButton} onClick={() => props.onClickQuantity(item, '-')} type="submit">-</button>
+              <p>{item.quantity}</p>
+              <button className={styles.miniButton} onClick={() => props.onClickQuantity(item, '+')} type="submit">+</button>
             </div>
           </li>
         ))}
