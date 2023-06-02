@@ -19,6 +19,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap:20px;
 }
 
@@ -29,35 +30,42 @@
 }
 
 .options{
-    /* display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap:15px; */
-    display: grid;
+    flex-wrap: wrap;
+    gap:15px;
+    width: 600px;
+    /* display: grid;
     grid-template-columns: 200px 200px;
     row-gap: 15%;
+    column-gap: 25%; */
+}
+
+.products {
+    /* display: grid;
+    grid-template-columns: 200px 200px;
+    row-gap: 3%;
     column-gap: 25%;
+    margin-top: 7%; */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap:5px;
+
 }
 
 .pedidos{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
-    width: 90vw;
-    height: 300px;
+    min-width: 300px;
+    min-height: 300px;
     background-color: white;
     border-radius: 30px;
     padding: 10px;
     margin-bottom: 20px;
-}
-
-.products {
-    display: grid;
-    grid-template-columns: 200px 200px;
-    row-gap: 3%;
-    column-gap: 25%;
-    margin-top: 7%;
 }
 
 .resumoTitulo{
@@ -101,13 +109,21 @@
         display: none;
     }
 
+    .products{
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 600px;
+        gap:10px;
+        justify-content: center;
+    }
+
     .logoMenuSegunda{
         display: block;
     }
 
     .pedidos{
         max-width: 400px;
-        height: 70vh;
+        min-height: 70vh;
     }
 
     .pedidosDesktop{

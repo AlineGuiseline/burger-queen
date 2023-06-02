@@ -1,6 +1,9 @@
 .lista, .total{
+    min-width: 350px;
     font-family: 'Montserrat', sans-serif;
     list-style: none;
+    display: flex;
+    flex-direction: column;
 }
 
 .product{
