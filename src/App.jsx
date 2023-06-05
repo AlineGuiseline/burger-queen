@@ -5,17 +5,15 @@ import {
 } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Menu from './pages/Menu/Menu';
+import Kitchen from './pages/Kitchen/Kitchen';
 
 function App() {
   return (
     <Router>
-      {/* <div>
-        <Link to="/">Home</Link>
-        <Link to="/menu">Menu</Link>
-      </div> */}
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/menu" element={<Menu />} />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/kitchen" element={<Kitchen />} />
       </Routes>
     </Router>
   );

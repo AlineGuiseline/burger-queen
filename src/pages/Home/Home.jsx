@@ -20,11 +20,14 @@ function Home() {
     setErro('');
     try {
       const loggedUser = await userLogin(email, password);
-      console.log(loggedUser);
+      console.log(password);
       setItem('token', loggedUser.accessToken);
 
       if (loggedUser.user.role === 'admin') {
         navigate('/menu');
+      }
+      if (loggedUser.user.role === 'chef') {
+        navigate('/kitchen');
       }
     } catch (error) {
       console.log(error);
