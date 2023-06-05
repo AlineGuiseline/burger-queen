@@ -6,6 +6,8 @@ import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import getProducts from '../../api/products';
 import ItemOrder from '../../components/ItemOrder/ItemOrder';
+import { getItem } from '../../storage/localStorage';
+import createOrder from '../../api/orders';
 
 // import Paragraph from '../../components/Paragraph/Paragraph';
 
@@ -16,6 +18,7 @@ function Menu() {
   const [orderItem, setOrderItem] = useState([]);
   const [filterCategory, setFilterCategory] = useState('');
   const [showProducts, setShowProducts] = useState(false);
+  const [name, setName] = useState('');
   // criar estado para armazenar produtos filtrados CHECK
   // função que recebe como parâmetro o tipo de produto -- faz o filtro CHECK
   // adicionar o onClick com a função da filtragem CHECK
@@ -66,7 +69,7 @@ function Menu() {
 
   function addItem(item) {
     // verificar se getIndex existe => quantity + 1
-    // se não existe inicar com 1
+    // se não existe iniciar com 1
     const getIndex = orderItem.findIndex((order) => order.id === item.id);
     const newOrder = [...orderItem];
     if (getIndex >= 0) {
@@ -79,6 +82,18 @@ function Menu() {
       setOrderItem([...newOrder, product]);
     }
   }
+
+  // A TENTATIVA TÁ AQUIIIII
+  const newOrder = async (e) => {
+    e.preventDefault();
+    try {
+      const orderRequest = await createOrder(name);
+      console.log(orderRequest);
+      getItem('token', orderRequest.accessToken);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <section className="bodyMenu">
@@ -109,19 +124,20 @@ function Menu() {
         <div className="pedidos">
           <div className="resumoPedido">
             <p className="resumo">Resumo do Pedido:</p>
-            <Input
-              type="text"
-              // value="nome"
-              // onChange={whenTyped}
-              // name="nome"
-              placeholder="Nome do Cliente"
-            />
-            <ItemOrder
-              orderItem={orderItem}
-              onClickQuantity={quantityControl}
-            />
+            <form className="form" onSubmit={newOrder}>
+              <Input
+                value={name}
+                whenChanged={(value) => setName(value)}
+                name={name}
+                placeholder="Nome do cliente"
+              />
+              <ItemOrder
+                orderItem={orderItem}
+                onClickQuantity={quantityControl}
+              />
+              <Button> Enviar para a Cozinha </Button>
+            </form>
           </div>
-          <Button> Enviar para a Cozinha </Button>
         </div>
       </div>
     </section>
