@@ -1,24 +1,18 @@
-import { getItem } from '../storage/localStorage';
-
 const API_URL = 'https://burger-queen-api-mock-five.vercel.app';
 
-const createOrder = async (userId, client, products, dateEntry) => {
-  const response = await fetch(`${API_URL}/orders`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${getItem('token')}`,
-    },
-    body: JSON.stringify({
-      userId,
-      client,
-      products,
-      status: 'pending',
-      dateEntry,
-    }),
-  });
-  console.log(response);
-  return response.json();
-};
+const createOrder = async (orderResume, clientName, waiterId, token) => fetch(`${API_URL}/orders`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
+  },
+  body: JSON.stringify({
+    userId: waiterId,
+    client: clientName,
+    products: orderResume,
+    status: 'pending',
+    dateEntry: new Date().toLocaleString('pt-BR'),
+  }),
+});
 
 export default createOrder;
