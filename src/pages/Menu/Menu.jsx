@@ -64,6 +64,22 @@ function Menu() {
     }
   };
 
+  function addItem(item) {
+    // verificar se getIndex existe => quantity + 1
+    // se não existe inicar com 1
+    const getIndex = orderItem.findIndex((order) => order.id === item.id);
+    const newOrder = [...orderItem];
+    if (getIndex >= 0) {
+      const specificItem = newOrder[getIndex];
+      const quantityChange = specificItem.quantity + 1;
+      newOrder[getIndex].quantity = quantityChange;
+      setOrderItem(newOrder);
+    } else {
+      const product = { ...item, quantity: 1 };
+      setOrderItem([...newOrder, product]);
+    }
+  }
+
   return (
     <section className="bodyMenu">
       <img className="logoMenu" src={Logo} alt="logoBurguerQueen" />
@@ -82,7 +98,7 @@ function Menu() {
               key={product.id}
               item={product.name}
               valor={product.price}
-              onClick={() => setOrderItem((prevState) => [...prevState, product])}
+              onClick={() => addItem(product)}
             />
           ))}
         </div>

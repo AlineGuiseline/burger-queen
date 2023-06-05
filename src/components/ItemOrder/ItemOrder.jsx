@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './ItemOrder.module.css';
 
+// const somaValores = (price, quantity) => price * quantity;
+
 function ItemOrder(props) {
   return (
     <section>
@@ -8,7 +10,9 @@ function ItemOrder(props) {
         {props.orderItem.map((item) => (
           <li className={styles.product} key={item.id}>
             <p className={styles.name}>{item.name}</p>
-            <p>{`R$${item.price * item.quantity}`}</p>
+            <p>
+              {`$${item.price * item.quantity}`}
+            </p>
             <div className={styles.add}>
               <button className={styles.miniButton} onClick={() => props.onClickQuantity(item, '-')} type="submit">-</button>
               <p>{item.quantity}</p>
@@ -17,7 +21,12 @@ function ItemOrder(props) {
           </li>
         ))}
       </ul>
-      <p className={styles.total}>Total: $</p>
+      <p className={styles.total}>
+        $
+        {props.orderItem.reduce((acumulador, valorAtual) => {
+          return acumulador + (valorAtual.price * valorAtual.quantity);
+        }, 0)}
+      </p>
     </section>
   );
 }
