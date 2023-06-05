@@ -11,11 +11,6 @@ const userLogin = async (email, password) => {
       password,
     }),
   });
-  if (response.status >= 400 && response.status <= 500) {
-    // eslint-disable-next-line no-console
-    console.log(response);
-    throw new Error('Verifique seus dados');
-  }
   return response.json();
 };
 
