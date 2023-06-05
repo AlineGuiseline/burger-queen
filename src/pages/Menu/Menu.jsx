@@ -1,12 +1,12 @@
+/* eslint-disable max-len */
 import { React, useEffect, useState } from 'react';
 import InfoBox from '../../components/InfoBox/InfoBox';
 import InfoBoxTitle from '../../components/InfoBoxTitle/InfoBoxTitle';
 import Logo from '../../assets/logo.png';
-import Button from '../../components/Button/Button';
+// import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import getProducts from '../../api/products';
 import ItemOrder from '../../components/ItemOrder/ItemOrder';
-import { getItem } from '../../storage/localStorage';
 import createOrder from '../../api/orders';
 
 // import Paragraph from '../../components/Paragraph/Paragraph';
@@ -18,7 +18,7 @@ function Menu() {
   const [orderItem, setOrderItem] = useState([]);
   const [filterCategory, setFilterCategory] = useState('');
   const [showProducts, setShowProducts] = useState(false);
-  const [name, setName] = useState('');
+  const [clientName, setName] = useState('');
   // criar estado para armazenar produtos filtrados CHECK
   // função que recebe como parâmetro o tipo de produto -- faz o filtro CHECK
   // adicionar o onClick com a função da filtragem CHECK
@@ -72,6 +72,10 @@ function Menu() {
     // se não existe iniciar com 1
     const getIndex = orderItem.findIndex((order) => order.id === item.id);
     const newOrder = [...orderItem];
+    // O método findIndex() retorna -1 quando o elemento não é encontrado no array, e 0 ou um valor positivo quando
+    // o elemento é encontrado. No JavaScript, 0 é considerado um valor falso em um contexto booleano.
+    // Portanto, a condição if (getIndex) irá falhar quando getIndex for igual a 0, resultando em um comportamento
+    // incorreto. Para corrigir isso, você deve verificar explicitamente se getIndex é maior ou igual a 0:
     if (getIndex >= 0) {
       const specificItem = newOrder[getIndex];
       const quantityChange = specificItem.quantity + 1;
@@ -84,14 +88,25 @@ function Menu() {
   }
 
   // A TENTATIVA TÁ AQUIIIII
-  const newOrder = async (e) => {
-    e.preventDefault();
+  const newOrder = async () => {
     try {
-      const orderRequest = await createOrder(name);
-      console.log(orderRequest);
-      getItem('token', orderRequest.accessToken);
+      const token = localStorage.getItem('token');
+      const waiterId = localStorage.getItem('userId');
+      console.log(waiterId);
+
+      if (clientName === '') {
+        throw new Error('Por favor, insira o nome do cliente');
+      }
+      if (orderItem.length <= 0) {
+        throw new Error('Por favor, insira ao menos 1 item ao pedido');
+      }
+      const response = await createOrder(orderItem, clientName, waiterId, token);
+      const orderData = await response.json();
+      console.log(orderData);
+      alert('Pedido enviado à cozinha com sucesso');
     } catch (error) {
-      console.log(error);
+      alert(error.message);
+      console.log(error.message);
     }
   };
 
@@ -124,20 +139,18 @@ function Menu() {
         <div className="pedidos">
           <div className="resumoPedido">
             <p className="resumo">Resumo do Pedido:</p>
-            <form className="form" onSubmit={newOrder}>
-              <Input
-                value={name}
-                whenChanged={(value) => setName(value)}
-                name={name}
-                placeholder="Nome do cliente"
-              />
-              <ItemOrder
-                orderItem={orderItem}
-                onClickQuantity={quantityControl}
-              />
-              <Button> Enviar para a Cozinha </Button>
-            </form>
+            <Input
+              value={clientName}
+              whenChanged={(value) => setName(value)}
+              name={clientName}
+              placeholder="Nome do cliente"
+            />
           </div>
+          <ItemOrder
+            orderItem={orderItem}
+            onClickQuantity={quantityControl}
+            onClick={newOrder}
+          />
         </div>
       </div>
     </section>

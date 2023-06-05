@@ -6,6 +6,10 @@ export function getItem(key) {
   return localStorage.getItem(key);
 }
 
-// export function getItem() {
-//   return localStorage.getItem('token');
-// }
+export const getToken = () => {
+  return localStorage.getItem('token');
+};
+
+export const getUserId = () => {
+  return localStorage.getItem('userId');
+};
