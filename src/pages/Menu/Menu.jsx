@@ -8,6 +8,7 @@ import Input from '../../components/Input/Input';
 import getProducts from '../../api/products';
 import ItemOrder from '../../components/ItemOrder/ItemOrder';
 import createOrder from '../../api/orders';
+import { getLocalStorageItem } from '../../storage/localStorage';
 
 // import Paragraph from '../../components/Paragraph/Paragraph';
 
@@ -26,7 +27,7 @@ function Menu() {
 
   useEffect(() => {
     async function fetchData() {
-      const token = localStorage.getItem('token');
+      const token = getLocalStorageItem('token');
       const response = await getProducts(token);
       const listaProdutos = await response.json();
       setProducts(listaProdutos);
@@ -90,8 +91,8 @@ function Menu() {
   // A TENTATIVA TÁ AQUIIIII
   const newOrder = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const waiterId = localStorage.getItem('userId');
+      const token = getLocalStorageItem('token');
+      const waiterId = getLocalStorageItem('userId');
       console.log(waiterId);
 
       if (clientName === '') {

@@ -7,7 +7,7 @@ import Button from '../../components/Button/Button';
 import userLogin from '../../api/users';
 import Paragraph from '../../components/Paragraph/Paragraph';
 import Error from '../../Errors/Errors';
-import { setItem } from '../../storage/localStorage';
+import { setLocalStorageItem } from '../../storage/localStorage';
 
 function Home() {
   const [email, setEmail] = useState('');
@@ -20,8 +20,10 @@ function Home() {
     setErro('');
     try {
       const loggedUser = await userLogin(email, password);
-      console.log(password);
-      setItem('token', loggedUser.accessToken);
+      console.log(loggedUser);
+      setLocalStorageItem('token', loggedUser.accessToken);
+      setLocalStorageItem('userId', loggedUser.user.id);
+      setLocalStorageItem('userRole', loggedUser.user.role);
 
       if (loggedUser.user.role === 'admin') {
         navigate('/menu');
