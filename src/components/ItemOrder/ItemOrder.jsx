@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './ItemOrder.module.css';
 
-// const somaValores = (price, quantity) => price * quantity;
-
 function ItemOrder(props) {
   return (
     <section>
