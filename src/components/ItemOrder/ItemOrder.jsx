@@ -26,7 +26,7 @@ function ItemOrder(props) {
           return acumulador + (valorAtual.price * valorAtual.quantity);
         }, 0)}
       </p>
-      <Button type="submit" onClick={() => props.onClick()}>Enviar para a Cozinha</Button>
+      <Button onClick={() => props.onClick()}>Enviar para a cozinha</Button>
     </section>
   );
 }

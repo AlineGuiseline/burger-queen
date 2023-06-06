@@ -1,17 +1,15 @@
 /* eslint-disable max-len */
 import { React, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import InfoBox from '../../components/InfoBox/InfoBox';
 import InfoBoxTitle from '../../components/InfoBoxTitle/InfoBoxTitle';
 import Logo from '../../assets/logo.png';
-import iconeSair from '../../assets/iconeSair.png';
-// import Button from '../../components/Button/Button';
+import logoutIcon from '../../assets/logoutIcon.png';
 import Input from '../../components/Input/Input';
 import getProducts from '../../api/products';
 import ItemOrder from '../../components/ItemOrder/ItemOrder';
 import createOrder from '../../api/orders';
-import { getLocalStorageItem } from '../../storage/localStorage';
-
-// import Paragraph from '../../components/Paragraph/Paragraph';
+import { getLocalStorageItem, removeLocalStorageItem } from '../../storage/localStorage';
 
 import './Menu.css';
 
@@ -89,12 +87,10 @@ function Menu() {
     }
   }
 
-  // A TENTATIVA TÁ AQUIIIII
   const newOrder = async () => {
     try {
       const token = getLocalStorageItem('token');
       const waiterId = getLocalStorageItem('userId');
-      console.log(waiterId);
 
       if (clientName === '') {
         throw new Error('Por favor, insira o nome do cliente');
@@ -112,11 +108,23 @@ function Menu() {
     }
   };
 
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    try {
+      removeLocalStorageItem('token');
+      removeLocalStorageItem('userId');
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <section className="bodyMenu">
       <div className="imagensHeader">
         <img className="logoMenu" src={Logo} alt="logoBurguerQueen" />
-        <img className="iconeSair" src={iconeSair} alt="icone logOut" />
+        <button type="submit" onClick={handleLogout} className="logoutIcon"><img className="logoutIcon" src={logoutIcon} alt="ícone-logout" /></button>
       </div>
       <div className="mainMenu">
         <div className="options">

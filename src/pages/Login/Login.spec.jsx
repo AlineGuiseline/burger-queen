@@ -4,8 +4,8 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useNavigate } from 'react-router-dom';
 import userLogin from '../../api/users';
-import { setItem } from '../../storage/localStorage';
-import Home from './Home';
+import { setLocalStorageItem } from '../../storage/localStorage';
+import Login from './Login';
 
 jest.mock('react-router-dom');
 jest.mock('../../api/users');
@@ -22,7 +22,7 @@ it('deve redirecionar admins à tela de Menu ao autenticar com sucesso', async (
   const mockNavigate = jest.fn();
   useNavigate.mockReturnValue(mockNavigate);
 
-  render(<Home />);
+  render(<Login />);
 
   const email = screen.getByPlaceholderText('email@exemplo.com');
   const password = screen.getByPlaceholderText('●●●●●●');
@@ -41,9 +41,9 @@ it('deve redirecionar admins à tela de Menu ao autenticar com sucesso', async (
   // verifica se o userLogin recebeu o que foi digitado no input
   expect(userLogin).toHaveBeenCalledWith('teste@teste.com', 'senha123');
 
-  // verifica se o setItem foi chamado 1x e com o retorno do userLogin (mockUserLogin)
-  expect(setItem).toHaveBeenCalledTimes(1);
-  expect(setItem).toHaveBeenCalledWith('token', mockUserLogin.accessToken);
+  // verifica se o setLocalStorageItem foi chamado 1x e com o retorno do userLogin (mockUserLogin)
+  expect(setLocalStorageItem).toHaveBeenCalledTimes(1);
+  expect(setLocalStorageItem).toHaveBeenCalledWith('token', mockUserLogin.accessToken);
 
   // verifica se o mockNavigatae foi chamado 1x e redirecionou pra tela de menu
   expect(mockNavigate).toHaveBeenCalledTimes(1);
