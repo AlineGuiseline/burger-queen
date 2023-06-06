@@ -4,6 +4,19 @@
     --fonte: 'Montserrat', sans-serif;
 }
 
+.imagensHeader{
+    display: flex;
+    align-items: center;
+}
+
+.iconeSair{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    position: absolute;
+    left: 1em;
+}
+
 .logoMenu,.logoMenuSegunda{
     width: 150px;
 }
@@ -130,5 +143,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .iconeSair{
+        top:2em;
+        left: 2em;
     }
 }
