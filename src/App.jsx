@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router, Routes, Route,
 
 } from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute';
 import Home from './pages/Home/Home';
 import Menu from './pages/Menu/Menu';
 import Kitchen from './pages/Kitchen/Kitchen';
@@ -12,8 +13,22 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/kitchen" element={<Kitchen />} />
+        <Route
+          path="/menu"
+          element={(
+            <ProtectedRoute roles={['admin']}>
+              <Menu />
+            </ProtectedRoute>
+)}
+        />
+        <Route
+          path="/kitchen"
+          element={(
+            <ProtectedRoute roles={['chef']}>
+              <Kitchen />
+            </ProtectedRoute>
+)}
+        />
       </Routes>
     </Router>
   );
