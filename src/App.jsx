@@ -4,7 +4,7 @@ import {
 
 } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
-import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
 import Menu from './pages/Menu/Menu';
 import Kitchen from './pages/Kitchen/Kitchen';
 
@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/" element={<Login />} />
         <Route
           path="/menu"
           element={(

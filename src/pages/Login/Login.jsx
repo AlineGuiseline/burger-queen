@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import './Home.css';
+import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../assets/logo.png';
 import Input from '../../components/Input/Input';
@@ -9,7 +9,7 @@ import Paragraph from '../../components/Paragraph/Paragraph';
 import Error from '../../Errors/Errors';
 import { setLocalStorageItem } from '../../storage/localStorage';
 
-function Home() {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -68,4 +68,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Login;
