@@ -3,6 +3,7 @@ import { React, useEffect, useState } from 'react';
 import InfoBox from '../../components/InfoBox/InfoBox';
 import InfoBoxTitle from '../../components/InfoBoxTitle/InfoBoxTitle';
 import Logo from '../../assets/logo.png';
+import iconeSair from '../../assets/iconeSair.png';
 // import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import getProducts from '../../api/products';
@@ -112,7 +113,10 @@ function Menu() {
 
   return (
     <section className="bodyMenu">
-      <img className="logoMenu" src={Logo} alt="logoBurguerQueen" />
+      <div className="imagensHeader">
+        <img className="logoMenu" src={Logo} alt="logoBurguerQueen" />
+        <img className="iconeSair" src={iconeSair} alt="icone logOut" />
+      </div>
       <div className="mainMenu">
         <div className="options">
           <InfoBoxTitle item="Café da manhã" onClick={() => filteredCategory('Café da manhã')} />

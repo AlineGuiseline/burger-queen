@@ -1,3 +1,10 @@
+.tudo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .lista, .total{
     min-width: 350px;
     font-family: 'Montserrat', sans-serif;
@@ -36,4 +43,8 @@
 .name{
     width: 120px;
     text-align: center;
+}
+
+.total{
+    font-weight: 600;
 }
