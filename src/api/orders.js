@@ -15,4 +15,20 @@ const createOrder = async (orderResume, clientName, waiterId, token) => fetch(`$
   }),
 });
 
-export default createOrder;
+// export default createOrder;
+
+const showOrders = async (token) => fetch(`${API_URL}/orders`, {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
+  },
+  // body: JSON.stringify({
+  //   client: clientName,
+  //   products: orderResume,
+  //   status: orderStatus,
+  //   dateEntry: orderDate,
+  // }),
+});
+
+export { createOrder, showOrders };
