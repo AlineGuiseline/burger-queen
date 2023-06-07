@@ -48,3 +48,19 @@
 .total{
     font-weight: 600;
 }
+
+.btnEstilo{
+    background-color: #358f84;
+    width: 200px;
+    height: 50px;
+    border-radius: 30px;
+    color:white;
+    border:none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 10px;
+}
+
+.btnEstilo:hover{
+    opacity: 0.6;
+}

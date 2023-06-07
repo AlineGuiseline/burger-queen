@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ItemOrder.module.css';
-import Button from '../Button/Button';
+// import Button from '../Button/Button';
 
 function ItemOrder(props) {
   return (
@@ -26,7 +26,8 @@ function ItemOrder(props) {
           return acumulador + (valorAtual.price * valorAtual.quantity);
         }, 0)}
       </p>
-      <Button onClick={() => props.onClick()}>Enviar para a cozinha</Button>
+      {/* <Button onClick={() => props.onClick()}>Enviar para a cozinha</Button> */}
+      <button className={styles.btnEstilo} type="submit" onClick={() => props.onClick()}>Enviar para a cozinha</button>
     </section>
   );
 }
