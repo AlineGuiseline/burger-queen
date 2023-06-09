@@ -5,6 +5,7 @@ import { showOrders } from '../../api/orders';
 import logo from '../../assets/logo.png';
 import LogoutButton from '../../components/LogoutButton/LogoutButton';
 import Paragraph from '../../components/Paragraph/Paragraph';
+import Button from '../../components/Button/Button';
 
 function Kitchen() {
   const [orders, setOrders] = useState([]);
@@ -33,13 +34,13 @@ function Kitchen() {
             <ul>
               {order.products.map((product) => (
                 <li key={product.id}>
-                  <Paragraph>Nome do Produto:{product.name}</Paragraph>
-                  <Paragraph>Quantidade:{product.quantity}</Paragraph>
+                  <Paragraph>{product.quantity} - {product.name}</Paragraph>
                 </li>
               ))}
             </ul>
             <Paragraph>Status:{order.status}</Paragraph>
             <Paragraph>Data de entrada:{order.dateEntry}</Paragraph>
+            <Button>Marcar como Pronto</Button>
           </div>
         ))}
       </section>
