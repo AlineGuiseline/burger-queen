@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from './LogoutButton.module.css';
 import { removeLocalStorageItem } from '../../storage/localStorage';
 import logoutIcon from '../../assets/logoutIcon.png';
 
@@ -17,7 +18,7 @@ function LogoutButton() {
   };
 
   return (
-    <button type="submit" onClick={handleLogout} className="logoutIcon"><img className="logoutIcon" src={logoutIcon} alt="ícone-logout" /></button>
+    <button type="submit" onClick={handleLogout} className={styles.logoutIcon}><img src={logoutIcon} alt="ícone-logout" /></button>
   );
 }
 
