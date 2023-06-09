@@ -23,6 +23,7 @@
         "react/destructuring-assignment":"off",
         "react/prop-types": "off",
         "jsx-a11y/label-has-associated-control": "off",
-        "arrow-body-style":"off"
+        "arrow-body-style":"off",
+        "react/jsx-one-expression-per-line": "off"
     }
 }

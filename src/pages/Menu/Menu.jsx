@@ -90,6 +90,7 @@ function Menu() {
     try {
       const token = getLocalStorageItem('token');
       const waiterId = getLocalStorageItem('userId');
+      const orderId = getLocalStorageItem('id'); // se der algum problema, voltar nesta linha, pq ela foi colocada depois
 
       if (clientName === '') {
         throw new Error('Por favor, insira o nome do cliente');
@@ -97,7 +98,7 @@ function Menu() {
       if (orderItem.length <= 0) {
         throw new Error('Por favor, insira ao menos 1 item ao pedido');
       }
-      const response = await createOrder(orderItem, clientName, waiterId, token);
+      const response = await createOrder(orderId, orderItem, clientName, waiterId, token);
       const orderData = await response.json();
       console.log(orderData);
       alert('Pedido enviado à cozinha com sucesso');

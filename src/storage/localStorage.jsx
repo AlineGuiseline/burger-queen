@@ -9,6 +9,3 @@ export function getLocalStorageItem(key) {
 export function removeLocalStorageItem(key) {
   return localStorage.removeItem(key);
 }
-
-// removeItem --> remover o token e o userId
-// criar um componente à parte para o ProtectedRoute

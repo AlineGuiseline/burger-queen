@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './Paragraph.module.css';
 
-function Paragraph({ text }) {
+function Paragraph({ children }) {
   return (
     <div>
-      <p className={styles.texto}>{text}</p>
+      <p className={styles.texto}>{children}</p>
     </div>
   );
 }
