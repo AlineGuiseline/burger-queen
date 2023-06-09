@@ -1,0 +1,11 @@
+.logoutIcon{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    position: absolute;
+    left: 1em;
+    top:2em;
+    border: none;
+    background: none;
+    transform: rotate(180deg);
+}
