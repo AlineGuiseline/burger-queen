@@ -1,22 +1,22 @@
 import { React, useState, useEffect } from 'react';
-import { setLocalStorageItem } from '../../storage/localStorage';
+import { getLocalStorageItem } from '../../storage/localStorage';
 import './Kitchen.css';
 import { showOrders } from '../../api/orders';
 import logo from '../../assets/logo.png';
 import LogoutButton from '../../components/LogoutButton/LogoutButton';
-import InfoBox from '../../components/InfoBox/InfoBox';
+import Paragraph from '../../components/Paragraph/Paragraph';
 
 function Kitchen() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const token = setLocalStorageItem('token');
+      const token = getLocalStorageItem('token');
       const response = await showOrders(token);
       const ordersList = await response.json();
       setOrders(ordersList);
+      console.log(ordersList);
     }
-
     fetchData();
   }, []);
 
@@ -28,13 +28,19 @@ function Kitchen() {
       </header>
       <section className="orders">
         {orders.map((order) => (
-          <InfoBox
-            key={order.id}
-            client={order.client}
-            products={order.products}
-            status={order.status}
-            dateEntry={order.dateEntry}
-          />
+          <div key={order.id} className="ordersKitchen">
+            <Paragraph>Cliente:{order.client}</Paragraph>
+            <ul>
+              {order.products.map((product) => (
+                <li key={product.id}>
+                  <Paragraph>Nome do Produto:{product.name}</Paragraph>
+                  <Paragraph>Quantidade:{product.quantity}</Paragraph>
+                </li>
+              ))}
+            </ul>
+            <Paragraph>Status:{order.status}</Paragraph>
+            <Paragraph>Data de entrada:{order.dateEntry}</Paragraph>
+          </div>
         ))}
       </section>
     </main>
