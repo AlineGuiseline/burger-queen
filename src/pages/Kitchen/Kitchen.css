@@ -18,6 +18,10 @@ ul{
     list-style: none;
 }
 
+.paragrafos{
+    display: flex;
+}
+
 .ordersKitchen{
     background-color: #ebd2f0;
     width: 400px;
