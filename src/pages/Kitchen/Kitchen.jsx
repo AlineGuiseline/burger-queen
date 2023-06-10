@@ -30,19 +30,21 @@ function Kitchen() {
       <section className="orders">
         {orders.map((order) => (
           <div key={order.id} className="ordersKitchen">
-            <Paragraph>Cliente: {order.client}</Paragraph>
-            <ul>
-              {order.products.map((product) => (
-                <li key={product.id}>
-                  <div className="paragrafos">
-                    <Paragraph>{product.quantity}</Paragraph>
-                    <Paragraph>{product.name}</Paragraph>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <Paragraph>Status: {order.status}</Paragraph>
-            <Paragraph>Data de entrada: {order.dateEntry}</Paragraph>
+            <div>
+              <Paragraph>Cliente: {order.client}</Paragraph>
+              <ul>
+                {order.products.map((product) => (
+                  <li key={product.id}>
+                    <div className="paragrafos">
+                      <Paragraph>{product.quantity}</Paragraph>
+                      <Paragraph>{product.name}</Paragraph>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <Paragraph>Status: {order.status}</Paragraph>
+              <Paragraph>Data de entrada: {order.dateEntry}</Paragraph>
+            </div>
 
             <Button>Marcar como Pronto</Button>
           </div>
