@@ -101,7 +101,12 @@ function Menu() {
       const response = await createOrder(orderId, orderItem, clientName, waiterId, token);
       const orderData = await response.json();
       console.log(orderData);
-      alert('Pedido enviado à cozinha com sucesso');
+
+      if (response.status === 201) {
+        alert('Pedido enviado à cozinha com sucesso');
+        setOrderItem([]);
+        setName('');
+      }
     } catch (error) {
       alert(error.message);
       console.log(error.message);
