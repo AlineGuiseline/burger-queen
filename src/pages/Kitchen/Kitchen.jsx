@@ -1,11 +1,11 @@
 import { React, useState, useEffect } from 'react';
 import { getLocalStorageItem } from '../../storage/localStorage';
 import './Kitchen.css';
-import { showOrders } from '../../api/orders';
+import { showOrders, editOrder } from '../../api/orders';
 import logo from '../../assets/logo.png';
 import LogoutButton from '../../components/LogoutButton/LogoutButton';
 import Paragraph from '../../components/Paragraph/Paragraph';
-import Button from '../../components/Button/Button';
+// import Button from '../../components/Button/Button';
 
 function Kitchen() {
   const [orders, setOrders] = useState([]);
@@ -20,6 +20,18 @@ function Kitchen() {
     }
     fetchData();
   }, []);
+
+  const testeClick = async (order) => {
+    try {
+      const token = getLocalStorageItem('token');
+      const response = await editOrder(token, order.id, 'pronto para envio');
+      const editList = await response.json();
+      window.location.reload();
+      console.log(editList);
+    } catch (error) {
+      throw error;
+    }
+  };
 
   return (
     <main>
@@ -45,8 +57,7 @@ function Kitchen() {
               <Paragraph>Status: {order.status}</Paragraph>
               <Paragraph>Data de entrada: {order.dateEntry}</Paragraph>
             </div>
-
-            <Button>Marcar como Pronto</Button>
+            <button type="submit" onClick={() => testeClick(order)}>Marcar como Pronto</button>
           </div>
         ))}
       </section>
