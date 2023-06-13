@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from 'react';
+import { formatDistance } from 'date-fns';
 import { getLocalStorageItem } from '../../storage/localStorage';
 import './Kitchen.css';
 import { showOrders, editOrder } from '../../api/orders';
@@ -55,9 +56,11 @@ function Kitchen() {
                 ))}
               </ul>
               <Paragraph>Status: {order.status}</Paragraph>
-              <Paragraph>Data de entrada: {order.dateEntry}</Paragraph>
+              <Paragraph>
+                Data de entrada: {formatDistance(new Date(), new Date(order.dateEntry)) }
+              </Paragraph>
             </div>
-            <button type="submit" onClick={() => testeClick(order)}>Marcar como Pronto</button>
+            <button className="botaoPronto" type="submit" onClick={() => testeClick(order)}>Marcar como Pronto</button>
           </div>
         ))}
       </section>
