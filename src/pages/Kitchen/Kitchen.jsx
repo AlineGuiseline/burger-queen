@@ -1,5 +1,7 @@
 import { React, useState, useEffect } from 'react';
-import { formatDistance } from 'date-fns';
+import { formatDistance, differenceInMinutes } from 'date-fns';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { getLocalStorageItem } from '../../storage/localStorage';
 import './Kitchen.css';
 import { showOrders, editOrder } from '../../api/orders';
@@ -27,7 +29,8 @@ function Kitchen() {
       const token = getLocalStorageItem('token');
       const response = await editOrder(token, order.id, 'pronto para envio');
       const editList = await response.json();
-      window.location.reload();
+      // window.location.reload();
+      toast.success(`Order completed on ${formatDistance(new Date(), new Date(order.dateEntry))}`);
       console.log(editList);
     } catch (error) {
       throw error;
@@ -37,6 +40,18 @@ function Kitchen() {
   return (
     <main>
       <header className="header">
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <img src={logo} className="logoKitchen" alt="logo-burger-queen" />
         <LogoutButton />
       </header>
@@ -57,7 +72,7 @@ function Kitchen() {
               </ul>
               <Paragraph>Status: {order.status}</Paragraph>
               <Paragraph>
-                Data de entrada: {formatDistance(new Date(), new Date(order.dateEntry)) }
+                Recebido hà {differenceInMinutes(new Date(), new Date(order.dateEntry))} minutos
               </Paragraph>
             </div>
             <button className="botaoPronto" type="submit" onClick={() => testeClick(order)}>Marcar como Pronto</button>
