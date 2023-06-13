@@ -1,5 +1,7 @@
 /* eslint-disable max-len */
 import { React, useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import InfoBox from '../../components/InfoBox/InfoBox';
 import InfoBoxTitle from '../../components/InfoBoxTitle/InfoBoxTitle';
 import Logo from '../../assets/logo.png';
@@ -103,7 +105,8 @@ function Menu() {
       console.log(orderData);
 
       if (response.status === 201) {
-        alert('Pedido enviado à cozinha com sucesso');
+        // alert('Pedido enviado à cozinha com sucesso');
+        toast.success('Pedido enviado à cozinha com sucesso!');
         setOrderItem([]);
         setName('');
       }
@@ -137,6 +140,9 @@ function Menu() {
               onClick={() => addItem(product)}
             />
           ))}
+          <ToastContainer
+            autoClose={3000}
+          />
         </div>
       </div>
 

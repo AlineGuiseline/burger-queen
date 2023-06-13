@@ -12,6 +12,7 @@ import Paragraph from '../../components/Paragraph/Paragraph';
 
 function Kitchen() {
   const [orders, setOrders] = useState([]);
+  const [removedOrderIds, setRemovedOrderIds] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -24,62 +25,78 @@ function Kitchen() {
     fetchData();
   }, []);
 
-  const testeClick = async (order) => {
+  const removeOrderFromList = (orderId) => {
+    setOrders((prevOrders) => prevOrders.filter((order) => order.id !== orderId));
+    setRemovedOrderIds((prevIds) => [...prevIds, orderId]);
+    localStorage.setItem('removedOrderIds', JSON.stringify([...removedOrderIds, orderId]));
+  };
+
+  const changeStatus = async (order) => {
     try {
       const token = getLocalStorageItem('token');
       const response = await editOrder(token, order.id, 'pronto para envio');
       const editList = await response.json();
       // window.location.reload();
-      toast.success(`Order completed on ${formatDistance(new Date(), new Date(order.dateEntry))}`);
+      toast.success(`The order took ${formatDistance(new Date(), new Date(order.dateEntry))} to be ready.`);
       console.log(editList);
+
+      removeOrderFromList(order.id);
     } catch (error) {
       throw error;
     }
   };
 
+  // Recupera a lista de IDs dos pedidos removidos do armazenamento local ao montar o componente
+  useEffect(() => {
+    const removedOrderIdsString = localStorage.getItem('removedOrderIds');
+    if (removedOrderIdsString) {
+      const removedOrders = JSON.parse(removedOrderIdsString);
+      setRemovedOrderIds(removedOrders);
+    }
+  }, []);
+
   return (
     <main>
       <header className="header">
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
+        <ToastContainer autoClose={3000} />
         <img src={logo} className="logoKitchen" alt="logo-burger-queen" />
         <LogoutButton />
       </header>
       <section className="orders">
-        {orders.map((order) => (
-          <div key={order.id} className="ordersKitchen">
-            <div>
-              <Paragraph>Cliente: {order.client}</Paragraph>
-              <ul>
-                {order.products.map((product) => (
-                  <li key={product.id}>
-                    <div className="paragrafos">
-                      <Paragraph>{product.quantity}</Paragraph>
-                      <Paragraph>{product.name}</Paragraph>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-              <Paragraph>Status: {order.status}</Paragraph>
-              <Paragraph>
-                Recebido hà {differenceInMinutes(new Date(), new Date(order.dateEntry))} minutos
-              </Paragraph>
+        {orders.map((order) => {
+          // Verifica se o ID do pedido está na lista de pedidos removidos
+          if (removedOrderIds.includes(order.id)) {
+            return null; // Não exibe o pedido na interface
+          }
+
+          return (
+            <div key={order.id} className="ordersKitchen">
+              <div>
+                <Paragraph>Cliente: {order.client}</Paragraph>
+                <ul>
+                  {order.products.map((product) => (
+                    <li key={product.id}>
+                      <div className="paragrafos">
+                        <Paragraph>{product.quantity}</Paragraph>
+                        <Paragraph>{product.name}</Paragraph>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <Paragraph>Status: {order.status}</Paragraph>
+                <Paragraph>
+                  Recebido há {differenceInMinutes(new Date(), new Date(order.dateEntry))} minuto(s)
+                </Paragraph>
+              </div>
+              <button className="botaoPronto" type="submit" onClick={() => changeStatus(order)}>
+                Marcar como Pronto
+              </button>
             </div>
-            <button className="botaoPronto" type="submit" onClick={() => testeClick(order)}>Marcar como Pronto</button>
-          </div>
-        ))}
+          );
+        })}
       </section>
     </main>
   );
 }
+
 export default Kitchen;
