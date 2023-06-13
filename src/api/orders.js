@@ -12,7 +12,7 @@ const createOrder = async (orderId, orderResume, clientName, waiterId, token) =>
     client: clientName,
     products: orderResume,
     status: 'pendente',
-    dateEntry: new Date().toLocaleString('pt-BR'),
+    dateEntry: new Date(),
   }),
 });
 
