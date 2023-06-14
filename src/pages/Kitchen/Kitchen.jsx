@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 import { formatDistance, differenceInMinutes } from 'date-fns';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getLocalStorageItem } from '../../storage/localStorage';
+import { getLocalStorageItem, setLocalStorageItem } from '../../storage/localStorage';
 import './Kitchen.css';
 import { showOrders, editOrder } from '../../api/orders';
 import logo from '../../assets/logo.png';
@@ -28,7 +28,7 @@ function Kitchen() {
   const removeOrderFromList = (orderId) => {
     setOrders((prevOrders) => prevOrders.filter((order) => order.id !== orderId));
     setRemovedOrderIds((prevIds) => [...prevIds, orderId]);
-    localStorage.setItem('removedOrderIds', JSON.stringify([...removedOrderIds, orderId]));
+    setLocalStorageItem('removedOrderIds', JSON.stringify([...removedOrderIds, orderId]));
   };
 
   const changeStatus = async (order) => {
@@ -48,7 +48,7 @@ function Kitchen() {
 
   // Recupera a lista de IDs dos pedidos removidos do armazenamento local ao montar o componente
   useEffect(() => {
-    const removedOrderIdsString = localStorage.getItem('removedOrderIds');
+    const removedOrderIdsString = getLocalStorageItem('removedOrderIds');
     if (removedOrderIdsString) {
       const removedOrders = JSON.parse(removedOrderIdsString);
       setRemovedOrderIds(removedOrders);
