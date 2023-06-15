@@ -13,6 +13,7 @@ import { getLocalStorageItem } from '../../storage/localStorage';
 
 import './Menu.css';
 import LogoutButton from '../../components/LogoutButton/LogoutButton';
+import CheckIcon from './CheckIcon/CheckIcon';
 
 function Menu() {
   const [products, setProducts] = useState([]);
@@ -119,10 +120,13 @@ function Menu() {
   return (
     <section className="bodyMenu">
       <div className="imagensHeader">
-        <img className="logoMenu" src={Logo} alt="logoBurguerQueen" />
         <LogoutButton />
+        <img className="logoMenu" src={Logo} alt="logoBurguerQueen" />
       </div>
       <div className="mainMenu">
+        <div className="btnProntos">
+          <CheckIcon />
+        </div>
         <div className="options">
           <InfoBoxTitle item="Café da manhã" onClick={() => filteredCategory('Café da manhã')} />
           <InfoBoxTitle item="Almoço" onClick={() => filteredCategory('Almoço')} />
