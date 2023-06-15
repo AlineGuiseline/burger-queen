@@ -2,109 +2,82 @@ import { React, useState, useEffect } from 'react';
 import { formatDistance, differenceInMinutes } from 'date-fns';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getLocalStorageItem, setLocalStorageItem } from '../../storage/localStorage';
+import { getLocalStorageItem } from '../../storage/localStorage';
 import './Kitchen.css';
 import { showOrders, editOrder } from '../../api/orders';
 import logo from '../../assets/logo.png';
 import LogoutButton from '../../components/LogoutButton/LogoutButton';
 import Paragraph from '../../components/Paragraph/Paragraph';
-// import Button from '../../components/Button/Button';
 
 function Kitchen() {
   const [orders, setOrders] = useState([]);
-  const [removedOrderIds, setRemovedOrderIds] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       const token = getLocalStorageItem('token');
       const response = await showOrders(token);
       const ordersList = await response.json();
-      setOrders(ordersList);
+
+      // const filterOrder = ordersList.filter(
+      //   (order) => order.status === 'pendente',
+      // );
+      // setOrders(filterOrder);
+
+      setOrders(ordersList.filter((order) => order.status === 'pendente'));
       console.log(ordersList);
     }
     fetchData();
   }, []);
-
-  const removeOrderFromList = (orderId) => {
-    //  filtrar a lista atual de pedidos (prevOrders) e manter apenas aqueles cujo id é diferente
-    // do orderId recebido. Isso remove o pedido da lista.
-    setOrders((prevOrders) => prevOrders.filter((order) => order.id !== orderId));
-    // Atualiza o estado removedOrderIds adicionando o orderId à lista existente.
-    // Isso mantém um registro dos pedidos removidos.
-    setRemovedOrderIds((prevIds) => [...prevIds, orderId]);
-    // Salva a lista atualizada de removedOrderIds no armazenamento local, convertendo-a para uma
-    // string JSON.
-    setLocalStorageItem('removedOrderIds', JSON.stringify([...removedOrderIds, orderId]));
-  };
 
   const changeStatus = async (order) => {
     try {
       const token = getLocalStorageItem('token');
       const response = await editOrder(token, order.id, 'pronto para envio');
       const editList = await response.json();
-      // window.location.reload();
-      toast.success(`The order took ${formatDistance(new Date(), new Date(order.dateEntry))} to be ready.`);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+      toast.success(`Order completed on ${formatDistance(new Date(), new Date(order.dateEntry))}. This page will automatically reload.`);
       console.log(editList);
-
-      removeOrderFromList(order.id);
     } catch (error) {
       throw error;
     }
   };
 
-  // Recupera a lista de IDs dos pedidos removidos do armazenamento local ao montar o componente
-  useEffect(() => {
-    // Obtém a lista de removedOrderIds do armazenamento local como uma string JSON.
-    const removedOrderIdsString = getLocalStorageItem('removedOrderIds');
-    if (removedOrderIdsString) {
-      // Converte a string JSON em um array de pedidos removidos.
-      const removedOrders = JSON.parse(removedOrderIdsString);
-      setRemovedOrderIds(removedOrders);
-    }
-  }, []);
-
   return (
     <main>
       <header className="header">
-        <ToastContainer autoClose={3000} />
+        <ToastContainer
+          autoClose={2000}
+        />
         <img src={logo} className="logoKitchen" alt="logo-burger-queen" />
         <LogoutButton />
       </header>
       <section className="orders">
-        {orders.map((order) => {
-          // Verifica se o ID do pedido está na lista de pedidos removidos
-          if (removedOrderIds.includes(order.id)) {
-            return null; // Não exibe o pedido na interface
-          }
-
-          return (
-            <div key={order.id} className="ordersKitchen">
-              <div>
-                <Paragraph>Cliente: {order.client}</Paragraph>
-                <ul>
-                  {order.products.map((product) => (
-                    <li key={product.id}>
-                      <div className="paragrafos">
-                        <Paragraph>{product.quantity}</Paragraph>
-                        <Paragraph>{product.name}</Paragraph>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-                <Paragraph>Status: {order.status}</Paragraph>
-                <Paragraph>
-                  Recebido há {differenceInMinutes(new Date(), new Date(order.dateEntry))} minuto(s)
-                </Paragraph>
-              </div>
-              <button className="botaoPronto" type="submit" onClick={() => changeStatus(order)}>
-                Marcar como Pronto
-              </button>
+        {orders.map((order) => (
+          <div key={order.id} className="ordersKitchen">
+            <div>
+              <Paragraph>Cliente: {order.client}</Paragraph>
+              <ul>
+                {order.products.map((product) => (
+                  <li key={product.id}>
+                    <div className="paragrafos">
+                      <Paragraph>{product.quantity}</Paragraph>
+                      <Paragraph>{product.name}</Paragraph>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <Paragraph>Status: {order.status}</Paragraph>
+              <Paragraph>
+                Recebido há {differenceInMinutes(new Date(), new Date(order.dateEntry))} minutos
+              </Paragraph>
             </div>
-          );
-        })}
+            <button className="botaoPronto" type="submit" onClick={() => changeStatus(order)}>Marcar como Pronto</button>
+          </div>
+        ))}
       </section>
     </main>
   );
 }
-
 export default Kitchen;

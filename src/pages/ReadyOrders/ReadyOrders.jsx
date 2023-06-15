@@ -3,7 +3,7 @@ import { formatDistance, differenceInMinutes } from 'date-fns';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { showOrders, editOrder } from '../../api/orders';
-import { getLocalStorageItem, setLocalStorageItem } from '../../storage/localStorage';
+import { getLocalStorageItem } from '../../storage/localStorage';
 import './ReadyOrders.css';
 import Paragraph from '../../components/Paragraph/Paragraph';
 import MenuIcon from './MenuIcon/MenuIcon';
@@ -12,7 +12,6 @@ import LogoutButton from '../../components/LogoutButton/LogoutButton';
 
 function ReadyOrders() {
   const [orders, setOrders] = useState([]);
-  const [removedOrderIds, setRemovedOrderIds] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -24,43 +23,20 @@ function ReadyOrders() {
     fetchData();
   }, []);
 
-  const removeOrderFromList = (orderId) => {
-    //  filtrar a lista atual de pedidos (prevOrders) e manter apenas aqueles cujo id é diferente
-    // do orderId recebido. Isso remove o pedido da lista.
-    setOrders((prevOrders) => prevOrders.filter((order) => order.id !== orderId));
-    // Atualiza o estado removedOrderIds adicionando o orderId à lista existente.
-    // Isso mantém um registro dos pedidos removidos.
-    setRemovedOrderIds((prevIds) => [...prevIds, orderId]);
-    // Salva a lista atualizada de removedOrderIds no armazenamento local, convertendo-a para uma
-    // string JSON.
-    setLocalStorageItem('removedOrderIds', JSON.stringify([...removedOrderIds, orderId]));
-  };
-
   const changeStatus = async (order) => {
     try {
       const token = getLocalStorageItem('token');
       const response = await editOrder(token, order.id, 'enviado');
       const editList = await response.json();
-      toast.success(`The order took ${formatDistance(new Date(), new Date(order.dateEntry))} to be ready.`);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+      toast.success(`The order took ${formatDistance(new Date(), new Date(order.dateEntry))} to be ready. This page will automatically reload.`);
       console.log(editList);
-
-      removeOrderFromList(order.id);
-
-      console.log('clicou');
     } catch (error) {
       throw error;
     }
   };
-
-  useEffect(() => {
-    // Obtém a lista de removedOrderIds do armazenamento local como uma string JSON.
-    const removedOrderIdsString = getLocalStorageItem('removedOrderIds');
-    if (removedOrderIdsString) {
-      // Converte a string JSON em um array de pedidos removidos.
-      const removedOrders = JSON.parse(removedOrderIdsString);
-      setRemovedOrderIds(removedOrders);
-    }
-  }, []);
 
   return (
     <div>
