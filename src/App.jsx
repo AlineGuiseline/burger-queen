@@ -7,6 +7,7 @@ import ProtectedRoute from './ProtectedRoute';
 import Login from './pages/Login/Login';
 import Menu from './pages/Menu/Menu';
 import Kitchen from './pages/Kitchen/Kitchen';
+import ReadyOrders from './pages/ReadyOrders/ReadyOrders';
 
 function App() {
   return (
@@ -26,6 +27,14 @@ function App() {
           element={(
             <ProtectedRoute roles={['chef']}>
               <Kitchen />
+            </ProtectedRoute>
+)}
+        />
+        <Route
+          path="/ready_orders"
+          element={(
+            <ProtectedRoute roles={['admin']}>
+              <ReadyOrders />
             </ProtectedRoute>
 )}
         />
