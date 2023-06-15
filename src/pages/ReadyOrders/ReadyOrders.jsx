@@ -63,15 +63,15 @@ function ReadyOrders() {
   }, []);
 
   return (
-    <div>
+    <div className="tudo">
       <header>
         <img className="logoReady" src={Logo} alt="logo_burguer_queen" />
         <LogoutButton />
         <ToastContainer autoClose={3000} />
       </header>
-      <main>
+      <div className="btnMenu">
         <MenuIcon />
-      </main>
+      </div>
       <section className="orders">
         {orders.map((order) => (
           <div key={order.id} className="ordersKitchen">
