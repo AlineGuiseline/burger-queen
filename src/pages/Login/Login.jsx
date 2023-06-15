@@ -25,7 +25,7 @@ function Login() {
       setLocalStorageItem('userId', loggedUser.user.id);
       setLocalStorageItem('userRole', loggedUser.user.role);
 
-      if (loggedUser.user.role === 'admin') {
+      if (loggedUser.user.role === 'waiter') {
         navigate('/menu');
       }
       if (loggedUser.user.role === 'chef') {

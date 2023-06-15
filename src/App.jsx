@@ -17,7 +17,7 @@ function App() {
         <Route
           path="/menu"
           element={(
-            <ProtectedRoute roles={['admin']}>
+            <ProtectedRoute roles={['waiter']}>
               <Menu />
             </ProtectedRoute>
 )}
@@ -33,7 +33,7 @@ function App() {
         <Route
           path="/ready_orders"
           element={(
-            <ProtectedRoute roles={['admin']}>
+            <ProtectedRoute roles={['waiter']}>
               <ReadyOrders />
             </ProtectedRoute>
 )}
