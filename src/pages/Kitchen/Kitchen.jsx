@@ -26,8 +26,14 @@ function Kitchen() {
   }, []);
 
   const removeOrderFromList = (orderId) => {
+    //  filtrar a lista atual de pedidos (prevOrders) e manter apenas aqueles cujo id é diferente
+    // do orderId recebido. Isso remove o pedido da lista.
     setOrders((prevOrders) => prevOrders.filter((order) => order.id !== orderId));
+    // Atualiza o estado removedOrderIds adicionando o orderId à lista existente.
+    // Isso mantém um registro dos pedidos removidos.
     setRemovedOrderIds((prevIds) => [...prevIds, orderId]);
+    // Salva a lista atualizada de removedOrderIds no armazenamento local, convertendo-a para uma
+    // string JSON.
     setLocalStorageItem('removedOrderIds', JSON.stringify([...removedOrderIds, orderId]));
   };
 
@@ -48,8 +54,10 @@ function Kitchen() {
 
   // Recupera a lista de IDs dos pedidos removidos do armazenamento local ao montar o componente
   useEffect(() => {
+    // Obtém a lista de removedOrderIds do armazenamento local como uma string JSON.
     const removedOrderIdsString = getLocalStorageItem('removedOrderIds');
     if (removedOrderIdsString) {
+      // Converte a string JSON em um array de pedidos removidos.
       const removedOrders = JSON.parse(removedOrderIdsString);
       setRemovedOrderIds(removedOrders);
     }
