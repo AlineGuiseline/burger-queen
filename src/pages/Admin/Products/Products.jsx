@@ -2,6 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LogoutButton from '../../../components/LogoutButton/LogoutButton';
 import Button from '../../../components/Button/Button';
+import AdminInfoBox from '../components/AdminInfoBox';
+import EditButton from '../components/Buttons/EditButton/EditButton';
+import DeleteButton from '../components/Buttons/DeleteButton/DeleteButton';
 
 function Products() {
   const navigate = useNavigate();
@@ -15,10 +18,26 @@ function Products() {
   };
 
   return (
-    <header>
-      <LogoutButton />
-      <Button onClick={handleBack}> Voltar </Button>
-    </header>
+    <section>
+      <header>
+        <LogoutButton />
+        <Button onClick={handleBack}> Voltar </Button>
+      </header>
+
+      <main>
+        <AdminInfoBox
+          label="Nome do produto"
+          type="text"
+        />
+        <AdminInfoBox
+          label="Quantidade"
+          type="number"
+        />
+        <EditButton />
+        <DeleteButton />
+      </main>
+
+    </section>
   );
 }
 
