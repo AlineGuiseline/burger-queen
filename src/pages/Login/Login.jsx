@@ -31,6 +31,9 @@ function Login() {
       if (loggedUser.user.role === 'chef') {
         navigate('/kitchen');
       }
+      if (loggedUser.user.role === 'admin') {
+        navigate('/homepage');
+      }
     } catch (error) {
       console.log(error);
       setErro(Error(error.message));

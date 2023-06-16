@@ -8,6 +8,9 @@ import Login from './pages/Login/Login';
 import Menu from './pages/Menu/Menu';
 import Kitchen from './pages/Kitchen/Kitchen';
 import ReadyOrders from './pages/ReadyOrders/ReadyOrders';
+import Homepage from './pages/Admin/Homepage/Homepage';
+import Employees from './pages/Admin/Employees/Employees';
+import Products from './pages/Admin/Products/Products';
 
 function App() {
   return (
@@ -35,6 +38,30 @@ function App() {
           element={(
             <ProtectedRoute roles={['waiter']}>
               <ReadyOrders />
+            </ProtectedRoute>
+)}
+        />
+        <Route
+          path="/homepage"
+          element={(
+            <ProtectedRoute roles={['admin']}>
+              <Homepage />
+            </ProtectedRoute>
+)}
+        />
+        <Route
+          path="/employees"
+          element={(
+            <ProtectedRoute roles={['admin']}>
+              <Employees />
+            </ProtectedRoute>
+)}
+        />
+        <Route
+          path="/products"
+          element={(
+            <ProtectedRoute roles={['admin']}>
+              <Products />
             </ProtectedRoute>
 )}
         />
