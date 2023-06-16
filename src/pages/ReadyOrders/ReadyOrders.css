@@ -6,3 +6,16 @@ header{
 .logoReady{
     width: 150px;
 }
+
+.tudo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnMenu{
+    width: 500px;
+    display: flex;
+    justify-content: flex-end;
+}
