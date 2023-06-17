@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './AdminInfoBox.module.css';
 
 function AdminInfoBox(props) {
   /*
@@ -18,10 +19,11 @@ function AdminInfoBox(props) {
 */
 
   return (
-    <section>
+    <section className={styles.container}>
       <div>
         <label>{props.label}</label>
         <input
+          className={styles.inputInfo}
           // className={styles.inputForm}
           type={props.type}
           value={props.value}

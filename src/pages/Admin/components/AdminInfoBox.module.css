@@ -1,0 +1,19 @@
+.container{
+    font-family: 'Montserrat', sans-serif;
+    color: #358f84;
+    width: 400px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.inputInfo{
+    height: 30px;
+    border-radius:30px;
+    padding: 5px;
+    border: none;
+    background-color:#82c7bf;
+    color:white;
+    margin-left: 5px;
+}
+
