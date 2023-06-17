@@ -5,6 +5,8 @@ import Button from '../../../components/Button/Button';
 import AdminInfoBox from '../components/AdminInfoBox';
 import EditButton from '../components/Buttons/EditButton/EditButton';
 import DeleteButton from '../components/Buttons/DeleteButton/DeleteButton';
+import Logo from '../../../assets/logo.png';
+import './Products.css';
 
 function Products() {
   const navigate = useNavigate();
@@ -19,22 +21,28 @@ function Products() {
 
   return (
     <section>
-      <header>
+      <header className="headerP">
         <LogoutButton />
-        <Button onClick={handleBack}> Voltar </Button>
+        <img className="logoProducts" src={Logo} alt="logo burguer queen" />
       </header>
-
-      <main>
-        <AdminInfoBox
-          label="Nome do produto"
-          type="text"
-        />
-        <AdminInfoBox
-          label="Quantidade"
-          type="number"
-        />
-        <EditButton />
-        <DeleteButton />
+      <div className="btnVoltar">
+        <Button onClick={handleBack}> Voltar </Button>
+      </div>
+      <main className="mainProducts">
+        <div className="inputs">
+          <AdminInfoBox
+            label="Nome do produto"
+            type="text"
+          />
+          <AdminInfoBox
+            label="Quantidade"
+            type="number"
+          />
+          <div className="buttonsP">
+            <EditButton />
+            <DeleteButton />
+          </div>
+        </div>
       </main>
 
     </section>

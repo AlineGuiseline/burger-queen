@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './EditButton.module.css';
 
 function EditButton() {
   const editInfo = () => {
@@ -6,7 +7,7 @@ function EditButton() {
   };
 
   return (
-    <button type="submit" onClick={editInfo}> Editar </button>
+    <button className={styles.botao} type="submit" onClick={editInfo}> Editar </button>
   );
 }
 

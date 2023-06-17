@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './DelteButton.module.css';
 
 function DeleteButton() {
   const deleteInfo = () => {
@@ -6,7 +7,7 @@ function DeleteButton() {
   };
 
   return (
-    <button type="submit" onClick={deleteInfo}> Excluir </button>
+    <button className={styles.botao} type="submit" onClick={deleteInfo}> Excluir </button>
   );
 }
 

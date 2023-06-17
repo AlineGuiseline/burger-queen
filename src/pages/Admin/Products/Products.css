@@ -1,0 +1,29 @@
+.logoProducts{
+    width: 150px;
+}
+
+.headerP{
+    display: flex;
+    align-items: center;
+}
+
+.btnVoltar{
+    margin: 10px;
+}
+
+.inputs{
+    width: 400px;
+    border: 2px solid #358f84;
+    border-radius: 30px;
+}
+
+.mainProducts{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.buttonsP{
+    display: flex;
+    justify-content: center;
+}
