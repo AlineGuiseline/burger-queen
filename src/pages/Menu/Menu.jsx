@@ -93,7 +93,7 @@ function Menu() {
     try {
       const token = getLocalStorageItem('token');
       const waiterId = getLocalStorageItem('userId');
-      const orderId = getLocalStorageItem('id'); // se der algum problema, voltar nesta linha, pq ela foi colocada depois
+      const orderId = getLocalStorageItem('id');
 
       if (clientName === '') {
         throw new Error('Por favor, insira o nome do cliente');

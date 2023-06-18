@@ -29,7 +29,7 @@ function AdminInfoBox(props) {
           value={props.value}
           // onChange={whenTyped}
           name={props.name}
-          disabled
+          // disabled
         />
 
         {/* <button type="submit" onClick={editInfo}> Editar </button>
