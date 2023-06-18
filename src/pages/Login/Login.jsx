@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Logo from '../../assets/logo.png';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
-import userLogin from '../../api/users';
+import { userLogin } from '../../api/users';
 import Paragraph from '../../components/Paragraph/Paragraph';
 import Error from '../../Errors/Errors';
 import { setLocalStorageItem } from '../../storage/localStorage';

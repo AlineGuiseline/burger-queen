@@ -15,19 +15,15 @@ const userLogin = async (email, password) => {
   return response.json();
 };
 
-/*
-const userLogin = (email, password) => fetch(`${API_URL}/login`, {
-  method: 'POST',
+const usersList = async (token) => fetch(`${API_URL}/users`, {
+  method: 'GET',
   headers: {
     'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
   },
-  body: JSON.stringify({
-    email,
-    password,
-  }),
 });
-*/
-export default userLogin;
+
+export { userLogin, usersList };
 
 // headers: são importantes para que eu possa dizer ao app qual o tipo de conteúdo que
 // estou passando. No caso, estou informando que é do tipo json

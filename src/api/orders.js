@@ -17,8 +17,6 @@ const createOrder = async (orderId, orderResume, clientName, waiterId, token) =>
   }),
 });
 
-// export default createOrder;
-
 const showOrders = async (token) => fetch(`${API_URL}/orders`, {
   method: 'GET',
   headers: {
