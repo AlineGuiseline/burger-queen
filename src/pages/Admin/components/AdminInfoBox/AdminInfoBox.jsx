@@ -2,11 +2,9 @@ import React from 'react';
 import styles from './AdminInfoBox.module.css';
 
 function AdminInfoBox(props) {
-  /*
-      const whenTyped = (evento) => {
+  const whenTyped = (evento) => {
     props.whenChanged(evento.target.value);
   };
-  */
 
   /*
   const editInfo = () => {
@@ -27,7 +25,7 @@ function AdminInfoBox(props) {
           // className={styles.inputForm}
           type={props.type}
           value={props.value}
-          // onChange={whenTyped}
+          onChange={whenTyped}
           name={props.name}
           // disabled
         />
