@@ -1,7 +1,9 @@
 import { React, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReactModal from 'react-modal';
-import { usersList } from '../../../api/users';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { usersList, editUser, deleteUser } from '../../../api/users';
 import LogoutButton from '../../../components/LogoutButton/LogoutButton';
 import Button from '../../../components/Button/Button';
 import AdminInfoBox from '../components/AdminInfoBox/AdminInfoBox';
@@ -10,6 +12,8 @@ import ButtonAdmin from '../components/Button/ButtonAdmin';
 import Logo from '../../../assets/logo.png';
 import './Employees.css';
 import { getLocalStorageItem } from '../../../storage/localStorage';
+
+ReactModal.setAppElement('#root');
 
 function Employees() {
   const navigate = useNavigate();
@@ -24,6 +28,7 @@ function Employees() {
 
   const [listEmployees, setListEmployees] = useState([]);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedEmployee, setSelectedEmployee] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -35,7 +40,8 @@ function Employees() {
     fetchData();
   }, []);
 
-  const openModal = () => {
+  const openModal = (employee) => {
+    setSelectedEmployee(employee);
     setModalOpen(true);
   };
 
@@ -56,9 +62,43 @@ function Employees() {
     },
   };
 
+  const changeInfo = async (users) => {
+    try {
+      const token = getLocalStorageItem('token');
+      const response = await editUser(token, users.id, users);
+      const editList = await response.json();
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+      toast.success('As informações foram atualizadas!');
+      console.log(editList);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const deleteEmployee = async (users) => {
+    try {
+      const token = getLocalStorageItem('token');
+      console.log(users);
+      const response = await deleteUser(token, users.id);
+      const editList = await response.json();
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+      toast.success('O funcionário foi deletado com sucesso!');
+      console.log(editList);
+    } catch (error) {
+      throw error;
+    }
+  };
+
   return (
     <section>
       <header className="headerE">
+        <ToastContainer
+          autoClose={2000}
+        />
         <LogoutButton />
         <img className="logoEmployees" src={Logo} alt="logo burger queen" />
       </header>
@@ -82,17 +122,18 @@ function Employees() {
           />
         </div>
         {listEmployees.map((item) => (
-          <div className="inputsE">
+          <div className="inputsE" key={item.id}>
             <Paragraph> {item.name} </Paragraph>
             <Paragraph> {item.email} </Paragraph>
             <Paragraph> {item.role} </Paragraph>
             <div className="buttons">
               <ButtonAdmin
                 nome="Editar"
-                onClick={openModal}
+                onClick={() => openModal(item)}
               />
               <ButtonAdmin
                 nome="Excluir"
+                onClick={() => deleteEmployee(item)}
               />
             </div>
           </div>
@@ -102,22 +143,43 @@ function Employees() {
       <ReactModal
         isOpen={isModalOpen}
         style={customStyles}
+        appElement={document.getElementById('root')}
       >
-        <AdminInfoBox
-          label="Nome Completo"
-          type="text"
-        />
-        <AdminInfoBox
-          label="Email"
-          type="email"
-        />
-        <AdminInfoBox
-          label="Função"
-          type="text"
-        />
+        {selectedEmployee && (
+        <>
+          <AdminInfoBox
+            label="Nome Completo"
+            type="text"
+            value={selectedEmployee.name || ''}
+            whenChanged={(value) => setSelectedEmployee((prevEmployee) => ({
+              ...prevEmployee,
+              name: value,
+            }))}
+          />
+          <AdminInfoBox
+            label="Email"
+            type="email"
+            value={selectedEmployee.email || ''}
+            whenChanged={(value) => setSelectedEmployee((prevEmployee) => ({
+              ...prevEmployee,
+              email: value,
+            }))}
+          />
+          <AdminInfoBox
+            label="Função"
+            type="text"
+            value={selectedEmployee.role || ''}
+            whenChanged={(value) => setSelectedEmployee((prevEmployee) => ({
+              ...prevEmployee,
+              role: value,
+            }))}
+          />
+        </>
+        )}
         <div className="buttons">
           <ButtonAdmin
             nome="Salvar"
+            onClick={() => changeInfo(selectedEmployee)}
           />
           <ButtonAdmin
             nome="Fechar"

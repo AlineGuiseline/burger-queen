@@ -23,7 +23,41 @@ const usersList = async (token) => fetch(`${API_URL}/users`, {
   },
 });
 
-export { userLogin, usersList };
+const editUser = async (token, id, newInfo) => fetch(`${API_URL}/users/${id}`, {
+  method: 'PATCH',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
+  },
+  body: JSON.stringify(newInfo),
+});
+
+const deleteUser = async (token, id) => fetch(`${API_URL}/users/${id}`, {
+  method: 'DELETE',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
+  },
+});
+
+const createUser = async (id, name, email, password, role, token) => fetch(`${API_URL}/users`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
+  },
+  body: JSON.stringify({
+    id,
+    name,
+    email,
+    password,
+    role,
+  }),
+});
+
+export {
+  userLogin, usersList, editUser, deleteUser, createUser,
+};
 
 // headers: são importantes para que eu possa dizer ao app qual o tipo de conteúdo que
 // estou passando. No caso, estou informando que é do tipo json
