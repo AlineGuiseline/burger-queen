@@ -1,8 +1,12 @@
 import { React, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReactModal from 'react-modal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { getLocalStorageItem } from '../../../storage/localStorage';
-import getStock from '../../../api/stock';
+import {
+  getProducts, editProduct, deleteProduct, createProduct,
+} from '../../../api/products';
 import LogoutButton from '../../../components/LogoutButton/LogoutButton';
 import Button from '../../../components/Button/Button';
 import AdminInfoBox from '../components/AdminInfoBox/AdminInfoBox';
@@ -25,19 +29,23 @@ function Products() {
 
   const [listStock, setListStock] = useState([]);
   const [isModalOpen, setModalOpen] = useState(false);
-  // const [infoProduto, setInfoProduto] = useState({});
+  const [selectedProduct, setSelectedProduct] = useState([]);
+  const [productName, setProductName] = useState([]);
+  const [productPrice, setProductPrice] = useState([]);
+  const [productType, setProductType] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       const token = getLocalStorageItem('token');
-      const response = await getStock(token);
+      const response = await getProducts(token);
       const listaDeProdutos = await response.json();
       setListStock(listaDeProdutos);
     }
     fetchData();
   }, []);
 
-  const openModal = () => {
+  const openModal = (products) => {
+    setSelectedProduct(products);
     setModalOpen(true);
   };
 
@@ -58,8 +66,64 @@ function Products() {
     },
   };
 
+  const changeProduct = async (products) => {
+    try {
+      const token = getLocalStorageItem('token');
+      const response = await editProduct(token, products.id, products);
+      const editList = await response.json();
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+      toast.success('As informações foram atualizadas!');
+      console.log(editList);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const deleteAProduct = async (products) => {
+    try {
+      const token = getLocalStorageItem('token');
+      console.log(products);
+      const response = await deleteProduct(token, products.id);
+      const editList = await response.json();
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+      toast.success('O produto foi deletado com sucesso!');
+      console.log(editList);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const createNewProduct = async () => {
+    try {
+      const token = getLocalStorageItem('token');
+      const productId = getLocalStorageItem('id');
+      const response = await createProduct(
+        token,
+        productId,
+        productName,
+        productPrice,
+        productType,
+      );
+      const editList = await response.json();
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+      toast.success('O produto foi criado com sucesso!');
+      console.log(editList);
+    } catch (error) {
+      throw error;
+    }
+  };
+
   return (
     <section>
+      <ToastContainer
+        autoClose={2000}
+      />
       <header className="headerP">
         <LogoutButton />
         <img className="logoProducts" src={Logo} alt="logo burguer queen" />
@@ -73,23 +137,42 @@ function Products() {
           <AdminInfoBox
             label="Produto:"
             type="text"
+            value={productName}
+            whenChanged={(value) => setProductName(value)}
+            name={productName}
           />
           <AdminInfoBox
-            label="Quantidade:"
+            label="Preço:"
             type="number"
+            value={productPrice}
+            whenChanged={(value) => setProductPrice(value)}
+            name={productPrice}
+          />
+          <AdminInfoBox
+            label="Tipo:"
+            type="text"
+            value={productType}
+            whenChanged={(value) => setProductType(value)}
+            name={productType}
+          />
+          <ButtonAdmin
+            nome="Salvar"
+            onClick={createNewProduct}
           />
         </div>
         {listStock.map((item) => (
-          <div className="inputs">
-            <Paragraph>{item.name}</Paragraph>
-            <Paragraph>{item.quantity}</Paragraph>
+          <div className="inputs" key={item.id}>
+            <Paragraph>Nome: {item.name}</Paragraph>
+            <Paragraph>Preço: ${item.price}</Paragraph>
+            <Paragraph>Tipo: {item.type}</Paragraph>
             <div className="buttonsP">
               <ButtonAdmin
                 nome="Editar"
-                onClick={openModal}
+                onClick={() => openModal(item)}
               />
               <ButtonAdmin
                 nome="Excluir"
+                onClick={() => deleteAProduct(item)}
               />
             </div>
           </div>
@@ -99,17 +182,41 @@ function Products() {
         isOpen={isModalOpen}
         style={customStyles}
       >
-        <AdminInfoBox
-          label="Nome do produto"
-          type="text"
-        />
-        <AdminInfoBox
-          label="Quantidade"
-          type="number"
-        />
+        {selectedProduct && (
+        <>
+          <AdminInfoBox
+            label="Nome"
+            type="text"
+            value={selectedProduct.name || ''}
+            whenChanged={(value) => setSelectedProduct((prevProduct) => ({
+              ...prevProduct,
+              name: value,
+            }))}
+          />
+          <AdminInfoBox
+            label="Preço"
+            type="number"
+            value={selectedProduct.price || ''}
+            whenChanged={(value) => setSelectedProduct((prevProduct) => ({
+              ...prevProduct,
+              price: value,
+            }))}
+          />
+          <AdminInfoBox
+            label="Tipo"
+            type="text"
+            value={selectedProduct.type || ''}
+            whenChanged={(value) => setSelectedProduct((prevProduct) => ({
+              ...prevProduct,
+              type: value,
+            }))}
+          />
+        </>
+        )}
         <div className="buttonsP">
           <ButtonAdmin
             nome="Salvar"
+            onClick={() => changeProduct(selectedProduct)}
           />
           <ButtonAdmin
             nome="Fechar"
