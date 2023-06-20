@@ -1,13 +1,14 @@
 import { React, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ReactModal from 'react-modal';
 import { getLocalStorageItem } from '../../../storage/localStorage';
 import getStock from '../../../api/stock';
 import LogoutButton from '../../../components/LogoutButton/LogoutButton';
 import Button from '../../../components/Button/Button';
-import AdminInfoBox from '../components/AdminInfoBox';
+import AdminInfoBox from '../components/AdminInfoBox/AdminInfoBox';
 import Paragraph from '../../../components/Paragraph/Paragraph';
-import EditButton from '../components/Buttons/EditButton/EditButton';
-import DeleteButton from '../components/Buttons/DeleteButton/DeleteButton';
+import ButtonAdmin from '../components/Button/ButtonAdmin';
+
 import Logo from '../../../assets/logo.png';
 import './Products.css';
 
@@ -23,6 +24,8 @@ function Products() {
   };
 
   const [listStock, setListStock] = useState([]);
+  const [isModalOpen, setModalOpen] = useState(false);
+  // const [infoProduto, setInfoProduto] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -34,6 +37,27 @@ function Products() {
     fetchData();
   }, []);
 
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const customStyles = {
+    content: {
+      borderRadius: '30px',
+      border: '1px solid #358f84',
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+
   return (
     <section>
       <header className="headerP">
@@ -44,7 +68,7 @@ function Products() {
         <Button onClick={handleBack}> Voltar </Button>
       </div>
       <main className="mainProducts">
-        <div className="inputsE">
+        <div className="inputs">
           <Paragraph>ADICIONAR NOVO</Paragraph>
           <AdminInfoBox
             label="Produto:"
@@ -60,22 +84,39 @@ function Products() {
             <Paragraph>{item.name}</Paragraph>
             <Paragraph>{item.quantity}</Paragraph>
             <div className="buttonsP">
-              <EditButton />
-              <DeleteButton />
+              <ButtonAdmin
+                nome="Editar"
+                onClick={openModal}
+              />
+              <ButtonAdmin
+                nome="Excluir"
+              />
             </div>
           </div>
         ))}
-        {/* <AdminInfoBox
-            label="Nome do produto"
-            type="text"
-          />
-          <AdminInfoBox
-            label="Quantidade"
-            type="number"
-          /> */}
-
       </main>
-
+      <ReactModal
+        isOpen={isModalOpen}
+        style={customStyles}
+      >
+        <AdminInfoBox
+          label="Nome do produto"
+          type="text"
+        />
+        <AdminInfoBox
+          label="Quantidade"
+          type="number"
+        />
+        <div className="buttonsP">
+          <ButtonAdmin
+            nome="Salvar"
+          />
+          <ButtonAdmin
+            nome="Fechar"
+            onClick={closeModal}
+          />
+        </div>
+      </ReactModal>
     </section>
   );
 }
