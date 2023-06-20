@@ -6,7 +6,7 @@ import InfoBox from '../../components/InfoBox/InfoBox';
 import InfoBoxTitle from '../../components/InfoBoxTitle/InfoBoxTitle';
 import Logo from '../../assets/logo.png';
 import Input from '../../components/Input/Input';
-import getProducts from '../../api/products';
+import { getProducts } from '../../api/products';
 import ItemOrder from '../../components/ItemOrder/ItemOrder';
 import { createOrder } from '../../api/orders';
 import { getLocalStorageItem } from '../../storage/localStorage';

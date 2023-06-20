@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import ReactModal from 'react-modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { usersList, editUser, deleteUser } from '../../../api/users';
+import {
+  usersList, editUser, deleteUser, createUser,
+} from '../../../api/users';
 import LogoutButton from '../../../components/LogoutButton/LogoutButton';
 import Button from '../../../components/Button/Button';
 import AdminInfoBox from '../components/AdminInfoBox/AdminInfoBox';
@@ -29,6 +31,10 @@ function Employees() {
   const [listEmployees, setListEmployees] = useState([]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState([]);
+  const [employeeName, setEmployeeName] = useState('');
+  const [employeeEmail, setEmployeeEmail] = useState('');
+  const [employeePassword, setEmployeePassword] = useState('');
+  const [employeeRole, setEmployeeRole] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -93,6 +99,29 @@ function Employees() {
     }
   };
 
+  const createEmployee = async () => {
+    try {
+      const token = getLocalStorageItem('token');
+      const userId = getLocalStorageItem('id');
+      const response = await createUser(
+        token,
+        userId,
+        employeeName,
+        employeeEmail,
+        employeePassword,
+        employeeRole,
+      );
+      const editList = await response.json();
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+      toast.success('O funcionário foi criado com sucesso!');
+      console.log(editList);
+    } catch (error) {
+      throw error;
+    }
+  };
+
   return (
     <section>
       <header className="headerE">
@@ -111,21 +140,41 @@ function Employees() {
           <AdminInfoBox
             label="Nome:"
             type="text"
+            value={employeeName}
+            whenChanged={(value) => setEmployeeName(value)}
+            name={employeeName}
           />
           <AdminInfoBox
             label="Email:"
             type="email"
+            value={employeeEmail}
+            whenChanged={(value) => setEmployeeEmail(value)}
+            name={employeeEmail}
+          />
+          <AdminInfoBox
+            label="Senha:"
+            type="text"
+            value={employeePassword}
+            whenChanged={(value) => setEmployeePassword(value)}
+            name={employeePassword}
           />
           <AdminInfoBox
             label="Função:"
             type="text"
+            value={employeeRole}
+            whenChanged={(value) => setEmployeeRole(value)}
+            name={employeeRole}
+          />
+          <ButtonAdmin
+            nome="Salvar"
+            onClick={createEmployee}
           />
         </div>
         {listEmployees.map((item) => (
           <div className="inputsE" key={item.id}>
-            <Paragraph> {item.name} </Paragraph>
-            <Paragraph> {item.email} </Paragraph>
-            <Paragraph> {item.role} </Paragraph>
+            <Paragraph>Nome: {item.name} </Paragraph>
+            <Paragraph>E-mail: {item.email} </Paragraph>
+            <Paragraph>Função: {item.role} </Paragraph>
             <div className="buttons">
               <ButtonAdmin
                 nome="Editar"

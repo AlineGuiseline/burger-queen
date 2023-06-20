@@ -40,7 +40,7 @@ const deleteUser = async (token, id) => fetch(`${API_URL}/users/${id}`, {
   },
 });
 
-const createUser = async (id, name, email, password, role, token) => fetch(`${API_URL}/users`, {
+const createUser = async (token, id, name, email, password, role) => fetch(`${API_URL}/users`, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
