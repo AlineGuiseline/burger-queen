@@ -155,10 +155,12 @@ function Products() {
             whenChanged={(value) => setProductType(value)}
             name={productType}
           />
-          <ButtonAdmin
-            nome="Salvar"
-            onClick={createNewProduct}
-          />
+          <div className="buttons">
+            <ButtonAdmin
+              nome="Salvar"
+              onClick={createNewProduct}
+            />
+          </div>
         </div>
         {listStock.map((item) => (
           <div className="inputs" key={item.id}>

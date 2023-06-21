@@ -165,10 +165,12 @@ function Employees() {
             whenChanged={(value) => setEmployeeRole(value)}
             name={employeeRole}
           />
-          <ButtonAdmin
-            nome="Salvar"
-            onClick={createEmployee}
-          />
+          <div className="buttons">
+            <ButtonAdmin
+              nome="Salvar"
+              onClick={createEmployee}
+            />
+          </div>
         </div>
         {listEmployees.map((item) => (
           <div className="inputsE" key={item.id}>
