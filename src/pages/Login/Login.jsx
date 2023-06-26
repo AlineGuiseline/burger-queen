@@ -6,7 +6,7 @@ import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import { userLogin } from '../../api/users';
 import Paragraph from '../../components/Paragraph/Paragraph';
-import Error from '../../Errors/Errors';
+// import Errors from '../../Errors/Errors';
 import { setLocalStorageItem } from '../../storage/localStorage';
 
 function Login() {
@@ -35,8 +35,7 @@ function Login() {
         navigate('/homepage');
       }
     } catch (error) {
-      console.log(error);
-      setErro(Error(error.message));
+      setErro(error.message);
     }
   };
 
@@ -61,9 +60,9 @@ function Login() {
             name={password}
             placeholder="●●●●●●"
           />
-          <Paragraph
-            text={erro && <Error message={erro} />}
-          />
+          <Paragraph>
+            {erro}
+          </Paragraph>
           <Button> Entrar </Button>
         </form>
       </section>

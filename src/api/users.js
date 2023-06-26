@@ -12,6 +12,9 @@ const userLogin = async (email, password) => {
       password,
     }),
   });
+  if (response.status === 400) {
+    throw new Error('Senha incorreta ou usuário não cadastrado!');
+  }
   return response.json();
 };
 

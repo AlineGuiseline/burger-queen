@@ -75,7 +75,7 @@ function Employees() {
       const editList = await response.json();
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 1500);
       toast.success('As informações foram atualizadas!');
       console.log(editList);
     } catch (error) {
@@ -91,7 +91,7 @@ function Employees() {
       const editList = await response.json();
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 1500);
       toast.success('O funcionário foi deletado com sucesso!');
       console.log(editList);
     } catch (error) {
@@ -103,6 +103,11 @@ function Employees() {
     try {
       const token = getLocalStorageItem('token');
       const userId = getLocalStorageItem('id');
+
+      if (employeeName === '' || employeeEmail === '' || employeePassword === '' || employeeRole === '') {
+        alert('Por favor, insira todas as informações do novo funcionário');
+      }
+
       const response = await createUser(
         token,
         userId,
@@ -112,11 +117,14 @@ function Employees() {
         employeeRole,
       );
       const editList = await response.json();
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000);
-      toast.success('O funcionário foi criado com sucesso!');
-      console.log(editList);
+
+      if (response.status === 201) {
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+        toast.success('O funcionário foi criado com sucesso!');
+        console.log(editList);
+      }
     } catch (error) {
       throw error;
     }
@@ -126,7 +134,7 @@ function Employees() {
     <section>
       <header className="headerE">
         <ToastContainer
-          autoClose={2000}
+          autoClose={1500}
         />
         <LogoutButton />
         <img className="logoEmployees" src={Logo} alt="logo burger queen" />

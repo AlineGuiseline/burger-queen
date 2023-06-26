@@ -30,9 +30,9 @@ function Products() {
   const [listStock, setListStock] = useState([]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState([]);
-  const [productName, setProductName] = useState([]);
-  const [productPrice, setProductPrice] = useState([]);
-  const [productType, setProductType] = useState([]);
+  const [productName, setProductName] = useState('');
+  const [productPrice, setProductPrice] = useState('');
+  const [productType, setProductType] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -73,7 +73,7 @@ function Products() {
       const editList = await response.json();
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 1500);
       toast.success('As informações foram atualizadas!');
       console.log(editList);
     } catch (error) {
@@ -89,7 +89,7 @@ function Products() {
       const editList = await response.json();
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 1500);
       toast.success('O produto foi deletado com sucesso!');
       console.log(editList);
     } catch (error) {
@@ -101,6 +101,12 @@ function Products() {
     try {
       const token = getLocalStorageItem('token');
       const productId = getLocalStorageItem('id');
+
+      if (productName === '' || productPrice === '' || productType === '') {
+        alert('Por favor, insira todas as informações do novo produto');
+        return;
+      }
+
       const response = await createProduct(
         token,
         productId,
@@ -109,11 +115,14 @@ function Products() {
         productType,
       );
       const editList = await response.json();
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000);
-      toast.success('O produto foi criado com sucesso!');
-      console.log(editList);
+
+      if (response.status === 201) {
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+        toast.success('O produto foi criado com sucesso!');
+        console.log(editList);
+      }
     } catch (error) {
       throw error;
     }
@@ -122,7 +131,7 @@ function Products() {
   return (
     <section>
       <ToastContainer
-        autoClose={2000}
+        autoClose={1500}
       />
       <header className="headerP">
         <LogoutButton />
