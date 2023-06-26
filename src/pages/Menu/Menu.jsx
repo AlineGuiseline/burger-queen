@@ -46,18 +46,29 @@ function Menu() {
     : products;
 
   const quantityControl = (item, children) => {
+    // item: objeto que contém informações sobre um item do pedido, como seu ID e quantidade.
+    // children: valor que indica se a quantidade do item será incrementada ou decrementada.
     const getIndex = orderItem.findIndex((order) => order.id === item.id);
+    // localiza o índice do array, procurando um objeto de pedido com um ID correspondente ao ID do item fornecido.
     const newOrder = [...orderItem];
+    // cria uma cópia do array orderItem e a armazena na variável newOrder.
 
     if (children === '-') {
       if (item.quantity <= 1) {
+        // Se for menor ou igual a 1, isso significa que o item deve ser removido do pedido.
         newOrder.splice(getIndex, 1);
+        // O método splice remove o item do array newOrder no índice encontrado.
         setOrderItem(newOrder);
+        // Em seguida, o estado orderItem é atualizado com o novo array newOrder usando o método setOrderItem.
       } else {
         const specificItem = newOrder[getIndex];
+        // pega o item específico do array newOrder usando o índice encontrado antes e o armazena na variável specificItem.
         const valueChange = specificItem.quantity - 1;
+        // calcula o novo valor da quantidade, que é a quantidade atual menos 1.
         newOrder[getIndex].quantity = valueChange;
+        // atualiza a propriedade quantity do objeto specificItem com o novo valor.
         setOrderItem(newOrder);
+        // atualiza o estado orderItem com o novo array newOrder.
       }
     }
 
@@ -106,7 +117,6 @@ function Menu() {
       console.log(orderData);
 
       if (response.status === 201) {
-        // alert('Pedido enviado à cozinha com sucesso');
         toast.success('Pedido enviado à cozinha com sucesso!');
         setOrderItem([]);
         setName('');
@@ -145,7 +155,7 @@ function Menu() {
             />
           ))}
           <ToastContainer
-            autoClose={3000}
+            autoClose={1500}
           />
         </div>
       </div>

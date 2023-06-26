@@ -40,6 +40,29 @@ const createProduct = async (token, id, name, price, type) => fetch(`${API_URL}/
   }),
 });
 
+/*
+const createProduct = async (token, id, name, price, type) => {
+  if (!name || !price || !type) {
+    throw new Error('Por favor, insira todas as informações do novo produto');
+  }
+
+  const response = fetch(`${API_URL}/products`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      id,
+      name,
+      price,
+      type,
+    }),
+  });
+
+  return response;
+};
+*/
 export {
   getProducts, editProduct, deleteProduct, createProduct,
 };
