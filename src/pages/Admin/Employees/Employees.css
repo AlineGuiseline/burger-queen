@@ -1,0 +1,33 @@
+.logoEmployees{
+    width: 150px;
+}
+
+.headerE{
+    display: flex;
+    align-items: center;
+}
+
+.btnVoltarE{
+    margin: 10px;
+}
+
+.inputsE{
+    width: 400px;
+    border: 2px solid #358f84;
+    border-radius: 30px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.mainEmployees{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,155 @@
+:root{
+    --Azul:#B3EAE4;
+    --azulEscuro: #358f84;
+    --fonte: 'Montserrat', sans-serif;
+}
+
+.imagensHeader{
+    display: flex;
+    align-items: center;
+}
+
+.logoMenu{
+    width: 150px;
+}
+
+.logoMenuSegunda{
+    display: none;
+}
+
+.bodyMenu{
+    background-color: var(--Azul);
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+}
+
+.mainMenu{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:20px;
+}
+
+.btnProntos{
+    align-self: flex-end;
+}
+
+
+.options{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap:15px;
+    width: 600px;
+    /* display: grid;
+    grid-template-columns: 200px 200px;
+    row-gap: 15%;
+    column-gap: 25%; */
+}
+
+.products {
+    /* display: grid;
+    grid-template-columns: 200px 200px;
+    row-gap: 3%;
+    column-gap: 25%;
+    margin-top: 7%; */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap:5px;
+
+}
+
+.pedidos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 300px;
+    min-height: 300px;
+    background-color: white;
+    border-radius: 30px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.resumoTitulo{
+    display: flex;
+}
+
+.resumoPedido{
+    align-self: flex-start;
+    padding: 10px;
+}
+
+.resumo{
+    font-size: 1.2em;
+    font-family: var(--fonte);
+    color: var(--azulEscuro);
+}
+
+.total, .pedidoItem{
+    font-family: var(--fonte);
+    font-size: 1em;
+}
+
+.pedidoItem{
+    border: 1px solid #358f84;
+    padding: 15px;
+    border-radius: 30px;
+    width: 350px;
+    height: 50px;
+    margin: 5px;
+}
+
+
+@media (min-width:800px) {
+    .bodyMenu{
+        flex-direction: row;
+        padding: 20px;
+        justify-content: space-around;
+        height: 100vh;
+    }
+
+    .logoMenu{
+        display: none;
+    }
+
+    .products{
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 600px;
+        gap:10px;
+        justify-content: center;
+    }
+
+    .logoMenuSegunda{
+        width: 150px;
+        margin-bottom:20px;
+        display: block;
+    }
+
+    .pedidos{
+        max-width: 400px;
+        min-height: 70vh;
+    }
+
+    .pedidosDesktop{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* .btnProntos{
+        align-self: flex-end;
+        top:2em;
+        position: absolute;
+    } */
+}
