@@ -12,3 +12,7 @@
     text-align: center;
     cursor: pointer;
 }
+
+.corAtiva{
+    border: 3px solid #eb9e2b;
+}

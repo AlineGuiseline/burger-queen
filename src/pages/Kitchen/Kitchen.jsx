@@ -18,11 +18,6 @@ function Kitchen() {
       const response = await showOrders(token);
       const ordersList = await response.json();
 
-      // const filterOrder = ordersList.filter(
-      //   (order) => order.status === 'pendente',
-      // );
-      // setOrders(filterOrder);
-
       setOrders(ordersList.filter((order) => order.status === 'pendente'));
       console.log(ordersList);
     }
