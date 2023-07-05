@@ -1,5 +1,4 @@
 const API_URL = 'https://burger-queen-api-mock-five.vercel.app';
-// const API_URL = 'http://localhost:8080';
 
 const createOrder = async (orderId, orderResume, clientName, waiterId, token) => fetch(`${API_URL}/orders`, {
   method: 'POST',
@@ -33,7 +32,6 @@ const editOrder = async (token, id, newStatus) => fetch(`${API_URL}/orders/${id}
   },
   body: JSON.stringify({
     status: newStatus,
-    // dateEntry: new Date().toLocaleString('pt-BR'),
   }),
 });
 

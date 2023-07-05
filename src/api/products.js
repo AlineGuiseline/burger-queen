@@ -1,5 +1,4 @@
 const API_URL = 'https://burger-queen-api-mock-five.vercel.app';
-// const API_URL = 'http://localhost:8080';
 
 const getProducts = (token) => fetch(`${API_URL}/products`, {
   method: 'GET',

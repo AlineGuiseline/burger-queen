@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 import { formatDistance, differenceInMinutes } from 'date-fns';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getLocalStorageItem } from '../../storage/localStorage';
+import { getLocalStorageItem } from '../../utils/localStorage';
 import './Kitchen.css';
 import { showOrders, editOrder } from '../../api/orders';
 import logo from '../../assets/logo.png';
@@ -19,7 +19,6 @@ function Kitchen() {
       const ordersList = await response.json();
 
       setOrders(ordersList.filter((order) => order.status === 'pendente'));
-      console.log(ordersList);
     }
     fetchData();
   }, []);
@@ -31,9 +30,8 @@ function Kitchen() {
       const editList = await response.json();
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
-      toast.success(`Order completed on ${formatDistance(new Date(), new Date(order.dateEntry))}. This page will automatically reload.`);
-      console.log(editList);
+      }, 1000);
+      toast.success(`Order completed on ${formatDistance(new Date(), new Date(order.dateEntry))}.`);
     } catch (error) {
       throw error;
     }

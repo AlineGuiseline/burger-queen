@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './LogoutButton.module.css';
-import { removeLocalStorageItem } from '../../storage/localStorage';
+import { removeLocalStorageItem } from '../../utils/localStorage';
 import logoutIcon from '../../assets/logoutIcon.png';
 
 function LogoutButton() {
