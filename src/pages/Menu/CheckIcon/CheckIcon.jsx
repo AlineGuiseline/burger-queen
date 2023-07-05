@@ -7,7 +7,7 @@ import Paragraph from '../../../components/Paragraph/Paragraph';
 function iconCheck() {
   const navigate = useNavigate();
 
-  const orders = () => {
+  const redirectReadyOrders = () => {
     try {
       navigate('/ready_orders');
     } catch (error) {
@@ -19,7 +19,7 @@ function iconCheck() {
     <div>
       <button
         type="submit"
-        onClick={orders}
+        onClick={redirectReadyOrders}
         className={styles.check}
       >
         <Paragraph>Pedidos prontos</Paragraph><img className={styles.icone} src={burgerIcon} alt="ícone-check" />

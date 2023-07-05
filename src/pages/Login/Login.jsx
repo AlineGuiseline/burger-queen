@@ -6,21 +6,19 @@ import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import { userLogin } from '../../api/users';
 import Paragraph from '../../components/Paragraph/Paragraph';
-// import Errors from '../../Errors/Errors';
-import { setLocalStorageItem } from '../../storage/localStorage';
+import { setLocalStorageItem } from '../../utils/localStorage';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const [erro, setErro] = useState(null);
+  const [error, setError] = useState(null);
 
   const signIn = async (e) => {
     e.preventDefault();
-    setErro('');
+    setError('');
     try {
       const loggedUser = await userLogin(email, password);
-      console.log(loggedUser);
       setLocalStorageItem('token', loggedUser.accessToken);
       setLocalStorageItem('userId', loggedUser.user.id);
       setLocalStorageItem('userRole', loggedUser.user.role);
@@ -34,8 +32,11 @@ function Login() {
       if (loggedUser.user.role === 'admin') {
         navigate('/homepage');
       }
+      if (loggedUser.user.role !== 'admin' && loggedUser.user.role !== 'chef' && loggedUser.user.role !== 'waiter') {
+        setError(`Usuário cadastrado como ${loggedUser.user.role}`);
+      }
     } catch (error) {
-      setErro(error.message);
+      setError(error.message);
     }
   };
 
@@ -61,7 +62,7 @@ function Login() {
             placeholder="●●●●●●"
           />
           <Paragraph>
-            {erro}
+            {error}
           </Paragraph>
           <Button> Entrar </Button>
         </form>

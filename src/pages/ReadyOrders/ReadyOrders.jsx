@@ -3,7 +3,7 @@ import { formatDistance, differenceInMinutes } from 'date-fns';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { showOrders, editOrder } from '../../api/orders';
-import { getLocalStorageItem } from '../../storage/localStorage';
+import { getLocalStorageItem } from '../../utils/localStorage';
 import './ReadyOrders.css';
 import Paragraph from '../../components/Paragraph/Paragraph';
 import MenuIcon from './MenuIcon/MenuIcon';
@@ -32,7 +32,6 @@ function ReadyOrders() {
         window.location.reload();
       }, 2000);
       toast.success(`The order took ${formatDistance(new Date(), new Date(order.dateEntry))} to be ready. This page will automatically reload.`);
-      console.log(editList);
     } catch (error) {
       throw error;
     }

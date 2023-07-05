@@ -1,8 +1,9 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
+import { getLocalStorageItem } from './utils/localStorage';
 
 function ProtectedRoute({ roles, children }) {
-  if (localStorage.getItem('token') && roles.includes(localStorage.getItem('userRole'))) {
+  if (getLocalStorageItem('token') && roles.includes(getLocalStorageItem('userRole'))) {
     return children;
   }
 
