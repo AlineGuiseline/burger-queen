@@ -14,8 +14,8 @@ Quinto projeto criado durante o bootcamp da Laboratória. O projeto é uma plata
 | burger@admin.com | senha123 |
 
 ## Índice
-[1. Histórias de usuários](#1-histórias-de-usuários) 
-[2. Rodando o arquivo localmente](#2-rodando-o-arquivo-localmente) 
+[1. Histórias de usuários](#1-histórias-de-usuários)  
+[2. Rodando o arquivo localmente](#2-rodando-o-arquivo-localmente)  
 [3. Primeira tela do garçom: Cardápio](#3-primeira-tela-do-garçom-cardápio)  
 [4. Segunda tela do garçom: Pedidos prontos para envio](#4-segunda-tela-do-garçom-pedidos-prontos-para-envio)  
 [5. Tela do chefe de cozinha](#5-tela-do-chefe-de-cozinha)  
@@ -46,8 +46,8 @@ A API responsável pelos dados da hamburgueria estão hospedados no Vercel, mas,
 5. Será aberta uma porta (possivelmente 8080)
 6. Retorne ao arquivo burger-queen, que contém o código do projeto em si
 7. Abra a pasta **src** e, depois disso, a subpasta **api**
-8. Abra os arquivos **orders**, **products** e **users** e, dentro de cada um deles, substitua o link da variável *API_URL* por 'http://localhost:número-da-porta'
- ex.: const API_URL = 'http://localhost:8080'
+8. Abra os arquivos **orders**, **products** e **users** e, dentro de cada um deles, substitua o link da variável *API_URL* por 'http://localhost:número-da-porta'  
+ **ex.: const API_URL = 'http://localhost:8080'**
 9. Salve as alterações feitas e rode o projeto, também no terminal, com o comando npm start
 **Importante:** Nâo se esqueça de manter a API rodando durante todo o tempo de uso do site Burger Queen (recomendamos que rode a API antes de rodar o site, para evitar qualquer tipo de conflito)
 ## 3. Primeira tela do garçom: Cardápio
