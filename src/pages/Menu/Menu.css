@@ -136,6 +136,7 @@
         display: block;
     }
 
+
     .pedidos{
         max-width: 400px;
         min-height: 70vh;
@@ -152,4 +153,10 @@
         top:2em;
         position: absolute;
     } */
+}
+
+@media (max-width:500px){
+    .options{
+        flex-direction: column;
+    }
 }
