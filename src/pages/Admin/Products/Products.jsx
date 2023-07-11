@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ReactModal from 'react-modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getLocalStorageItem } from '../../../storage/localStorage';
+import { getLocalStorageItem } from '../../../utils/localStorage';
 import {
   getProducts, editProduct, deleteProduct, createProduct,
 } from '../../../api/products';
@@ -75,7 +75,6 @@ function Products() {
         window.location.reload();
       }, 1500);
       toast.success('As informações foram atualizadas!');
-      console.log(editList);
     } catch (error) {
       throw error;
     }
@@ -84,14 +83,12 @@ function Products() {
   const deleteAProduct = async (products) => {
     try {
       const token = getLocalStorageItem('token');
-      console.log(products);
       const response = await deleteProduct(token, products.id);
       const editList = await response.json();
       setTimeout(() => {
         window.location.reload();
       }, 1500);
       toast.success('O produto foi deletado com sucesso!');
-      console.log(editList);
     } catch (error) {
       throw error;
     }
@@ -121,7 +118,6 @@ function Products() {
           window.location.reload();
         }, 1500);
         toast.success('O produto foi criado com sucesso!');
-        console.log(editList);
       }
     } catch (error) {
       throw error;

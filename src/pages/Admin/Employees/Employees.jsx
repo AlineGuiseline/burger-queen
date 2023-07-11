@@ -13,7 +13,7 @@ import Paragraph from '../../../components/Paragraph/Paragraph';
 import ButtonAdmin from '../components/Button/ButtonAdmin';
 import Logo from '../../../assets/logo.png';
 import './Employees.css';
-import { getLocalStorageItem } from '../../../storage/localStorage';
+import { getLocalStorageItem } from '../../../utils/localStorage';
 
 ReactModal.setAppElement('#root');
 
@@ -77,7 +77,6 @@ function Employees() {
         window.location.reload();
       }, 1500);
       toast.success('As informações foram atualizadas!');
-      console.log(editList);
     } catch (error) {
       throw error;
     }
@@ -86,14 +85,12 @@ function Employees() {
   const deleteEmployee = async (users) => {
     try {
       const token = getLocalStorageItem('token');
-      console.log(users);
       const response = await deleteUser(token, users.id);
       const editList = await response.json();
       setTimeout(() => {
         window.location.reload();
       }, 1500);
       toast.success('O funcionário foi deletado com sucesso!');
-      console.log(editList);
     } catch (error) {
       throw error;
     }
@@ -123,7 +120,6 @@ function Employees() {
           window.location.reload();
         }, 1500);
         toast.success('O funcionário foi criado com sucesso!');
-        console.log(editList);
       }
     } catch (error) {
       throw error;
