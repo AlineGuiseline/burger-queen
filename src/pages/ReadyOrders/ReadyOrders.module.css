@@ -21,15 +21,19 @@ header{
 }
 
 .orders{
-    margin: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap:10px;
+    flex-wrap: wrap;
+}
+
+.ordersKitchen{
     padding: 15px;
     border-radius: 20px;
     border: 2px solid #358f84;
     background-color: #edd1f3;
     width: 400px;
-}
-
-.ordersKitchen{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
