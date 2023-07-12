@@ -3,7 +3,7 @@ import { formatDistance, differenceInMinutes } from 'date-fns';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getLocalStorageItem } from '../../utils/localStorage';
-import './Kitchen.css';
+import styles from './Kitchen.module.css';
 import { showOrders, editOrder } from '../../api/orders';
 import logo from '../../assets/logo.png';
 import LogoutButton from '../../components/LogoutButton/LogoutButton';
@@ -30,7 +30,7 @@ function Kitchen() {
       const editList = await response.json();
       setTimeout(() => {
         window.location.reload();
-      }, 1000);
+      }, 3000);
       toast.success(`Order completed on ${formatDistance(new Date(), new Date(order.dateEntry))}.`);
     } catch (error) {
       throw error;
@@ -39,22 +39,22 @@ function Kitchen() {
 
   return (
     <main>
-      <header className="header">
+      <header className={styles.header}>
         <ToastContainer
-          autoClose={2000}
+          autoClose={3000}
         />
-        <img src={logo} className="logoKitchen" alt="logo-burger-queen" />
+        <img src={logo} className={styles.logoKitchen} alt="logo-burger-queen" />
         <LogoutButton />
       </header>
-      <section className="orders">
+      <section className={styles.orders}>
         {orders.map((order) => (
-          <div key={order.id} className="ordersKitchen">
+          <div key={order.id} className={styles.ordersKitchen}>
             <div>
               <Paragraph>Cliente: {order.client}</Paragraph>
               <ul>
                 {order.products.map((product) => (
                   <li key={product.id}>
-                    <div className="paragrafos">
+                    <div className={styles.paragraph}>
                       <Paragraph>{product.quantity}</Paragraph>
                       <Paragraph>{product.name}</Paragraph>
                     </div>
@@ -66,7 +66,7 @@ function Kitchen() {
                 Recebido há {differenceInMinutes(new Date(), new Date(order.dateEntry))} minutos
               </Paragraph>
             </div>
-            <button className="botaoPronto" type="submit" onClick={() => changeStatus(order)}>Marcar como Pronto</button>
+            <button className={styles.buttonReady} type="submit" onClick={() => changeStatus(order)}>Marcar como Pronto</button>
           </div>
         ))}
       </section>

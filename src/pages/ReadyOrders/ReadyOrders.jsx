@@ -4,11 +4,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { showOrders, editOrder } from '../../api/orders';
 import { getLocalStorageItem } from '../../utils/localStorage';
-import './ReadyOrders.css';
+import styles from './ReadyOrders.module.css';
 import Paragraph from '../../components/Paragraph/Paragraph';
 import MenuIcon from './MenuIcon/MenuIcon';
 import Logo from '../../assets/logo.png';
 import LogoutButton from '../../components/LogoutButton/LogoutButton';
+import Button from '../../components/Button/Button';
 
 function ReadyOrders() {
   const [orders, setOrders] = useState([]);
@@ -30,7 +31,7 @@ function ReadyOrders() {
       const editList = await response.json();
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 3000);
       toast.success(`The order took ${formatDistance(new Date(), new Date(order.dateEntry))} to be ready. This page will automatically reload.`);
     } catch (error) {
       throw error;
@@ -38,24 +39,24 @@ function ReadyOrders() {
   };
 
   return (
-    <div className="tudo">
+    <div className={styles.principalContainer}>
       <header>
-        <img className="logoReady" src={Logo} alt="logo_burguer_queen" />
+        <img className={styles.logoReady} src={Logo} alt="logo_burguer_queen" />
         <LogoutButton />
         <ToastContainer autoClose={3000} />
       </header>
-      <div className="btnMenu">
+      <div className={styles.btnMenu}>
         <MenuIcon />
       </div>
-      <section className="orders">
+      <section className={styles.orders}>
         {orders.map((order) => (
-          <div key={order.id} className="ordersKitchen">
+          <div key={order.id} className={styles.ordersKitchen}>
             <div>
               <Paragraph>Cliente: {order.client}</Paragraph>
               <ul>
                 {order.products.map((product) => (
                   <li key={product.id}>
-                    <div className="paragrafos">
+                    <div className={styles.paragraph}>
                       <Paragraph>{product.quantity}</Paragraph>
                       <Paragraph>{product.name}</Paragraph>
                     </div>
@@ -67,9 +68,10 @@ function ReadyOrders() {
                 Recebido há {differenceInMinutes(new Date(), new Date(order.dateEntry))} minuto(s)
               </Paragraph>
             </div>
-            <button className="botaoPronto" type="submit" onClick={() => changeStatus(order)}>
-              Marcar como enviado
-            </button>
+            <Button
+              onClick={() => changeStatus(order)}
+            >Marcar como enviado
+            </Button>
           </div>
         ))}
       </section>

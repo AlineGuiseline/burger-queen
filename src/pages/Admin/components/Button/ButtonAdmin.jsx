@@ -3,7 +3,7 @@ import styles from './ButtonAdmin.module.css';
 
 function ButtonAdmin(props) {
   return (
-    <button className={styles.botao} type="submit" onClick={props.onClick}> {props.nome} </button>
+    <button className={styles.buttonStyle} type="submit" onClick={props.onClick}> {props.nome} </button>
   );
 }
 

@@ -1,17 +1,17 @@
-.logoEmployees{
+.logoProducts{
     width: 150px;
 }
 
-.headerE{
+.header{
     display: flex;
     align-items: center;
 }
 
-.btnVoltarE{
+.btnVoltar{
     margin: 10px;
 }
 
-.inputsE{
+.inputs{
     width: 400px;
     border: 2px solid #358f84;
     border-radius: 30px;
@@ -21,7 +21,7 @@
     justify-content: space-around;
 }
 
-.mainEmployees{
+.mainProducts{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

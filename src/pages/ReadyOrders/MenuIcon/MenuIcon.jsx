@@ -22,7 +22,7 @@ function MenuIcon() {
         onClick={orders}
         className={styles.check}
       >
-        <Paragraph>Cardápio</Paragraph><img className={styles.icone} src={iconMenu} alt="ícone-menu" />
+        <Paragraph>Cardápio</Paragraph><img className={styles.icon} src={iconMenu} alt="ícone-menu" />
       </button>
     </div>
   );

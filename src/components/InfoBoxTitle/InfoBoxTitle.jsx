@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import styles from './InfoBoxTitle.module.css';
 
-function QuadradoTitulo(props) {
+function boxTitle(props) {
   const [corAtiva, setCorAtiva] = useState(false);
 
   const handleClick = () => {
@@ -9,19 +9,19 @@ function QuadradoTitulo(props) {
     props.onClick();
   };
 
-  const resetarCor = () => {
+  const resetColor = () => {
     setCorAtiva(false);
   };
 
-  const estiloBotao = corAtiva ? `${styles.nomeItemTitulo} ${styles.corAtiva}` : styles.nomeItemTitulo;
+  const buttonStyle = corAtiva ? `${styles.titleName} ${styles.activeColor}` : styles.titleName;
 
   return (
     <div>
       <button
         type="submit"
         onClick={handleClick}
-        className={estiloBotao}
-        onBlur={resetarCor}
+        className={buttonStyle}
+        onBlur={resetColor}
       >
         {props.item}
       </button>
@@ -29,4 +29,4 @@ function QuadradoTitulo(props) {
   );
 }
 
-export default QuadradoTitulo;
+export default boxTitle;

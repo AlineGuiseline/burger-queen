@@ -1,5 +1,5 @@
 
-.nomeItemTitulo{
+.titleName{
     width: 250px;
     height: 80px;
     border: none;
@@ -13,6 +13,6 @@
     cursor: pointer;
 }
 
-.corAtiva{
+.activeColor{
     border: 3px solid #eb9e2b;
 }

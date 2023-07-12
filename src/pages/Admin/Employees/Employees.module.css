@@ -1,13 +1,13 @@
-.logoProducts{
+.logoEmployees{
     width: 150px;
 }
 
-.headerP{
+.header{
     display: flex;
     align-items: center;
 }
 
-.btnVoltar{
+.buttonBack{
     margin: 10px;
 }
 
@@ -21,13 +21,13 @@
     justify-content: space-around;
 }
 
-.mainProducts{
+.mainEmployees{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.buttonsP{
+.buttons{
     display: flex;
     justify-content: center;
 }

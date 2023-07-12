@@ -3,9 +3,9 @@ import styles from './InfoBox.module.css';
 
 function InfoBox(props) {
   return (
-    <li className={styles.quadrado}>
-      <p className={styles.nomeItem}>{props.item}</p>
-      <p className={styles.valor}>
+    <li className={styles.container}>
+      <p className={styles.itemName}>{props.item}</p>
+      <p className={styles.price}>
         $
         {props.valor}
       </p>

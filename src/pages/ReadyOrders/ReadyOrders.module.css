@@ -1,0 +1,41 @@
+header{
+    display: flex;
+    justify-content: center;
+}
+
+.logoReady{
+    width: 150px;
+}
+
+.principalContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnMenu{
+    width: 500px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.orders{
+    margin: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    border: 2px solid #358f84;
+    background-color: #edd1f3;
+    width: 400px;
+}
+
+.ordersKitchen{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.paragraph{
+    display: flex;
+}
