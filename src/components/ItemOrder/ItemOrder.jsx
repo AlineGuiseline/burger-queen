@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './ItemOrder.module.css';
+import Button from '../Button/Button';
 
 function ItemOrder(props) {
   return (
-    <section className={styles.tudo}>
-      <ul className={styles.lista}>
+    <section className={styles.generalContainer}>
+      <ul className={styles.list}>
         {props.orderItem.map((item) => (
           <li className={styles.product} key={item.id}>
             <p className={styles.name}>{item.name}</p>
@@ -25,7 +26,11 @@ function ItemOrder(props) {
           return acumulador + (valorAtual.price * valorAtual.quantity);
         }, 0)}
       </p>
-      <button className={styles.btnEstilo} type="submit" onClick={() => props.onClick()}>Enviar para a cozinha</button>
+      <Button
+        onClick={() => props.onClick()}
+      >
+        Enviar para a cozinha
+      </Button>
     </section>
   );
 }

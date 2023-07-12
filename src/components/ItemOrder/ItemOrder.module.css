@@ -1,11 +1,11 @@
-.tudo{
+.generalContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.lista, .total{
+.list, .total{
     min-width: 350px;
     font-family: 'Montserrat', sans-serif;
     list-style: none;

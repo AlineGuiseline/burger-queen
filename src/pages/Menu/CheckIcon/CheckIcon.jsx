@@ -22,7 +22,7 @@ function iconCheck() {
         onClick={redirectReadyOrders}
         className={styles.check}
       >
-        <Paragraph>Pedidos prontos</Paragraph><img className={styles.icone} src={burgerIcon} alt="ícone-check" />
+        <Paragraph>Pedidos prontos</Paragraph><img className={styles.icon} src={burgerIcon} alt="ícone-check" />
       </button>
     </div>
   );

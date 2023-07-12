@@ -11,7 +11,7 @@ import ItemOrder from '../../components/ItemOrder/ItemOrder';
 import { createOrder } from '../../api/orders';
 import { getLocalStorageItem } from '../../utils/localStorage';
 
-import './Menu.css';
+import styles from './Menu.module.css';
 import LogoutButton from '../../components/LogoutButton/LogoutButton';
 import CheckIcon from './CheckIcon/CheckIcon';
 
@@ -74,32 +74,7 @@ function Menu() {
       setOrderItem([...newOrder, product]);
     }
   }
-  /*
-  const newOrder = async () => {
-    try {
-      const token = getLocalStorageItem('token');
-      const waiterId = getLocalStorageItem('userId');
-      const orderId = getLocalStorageItem('id');
 
-      if (clientName === '') {
-        throw new Error('Por favor, insira o nome do cliente');
-      }
-      if (orderItem.length <= 0) {
-        throw new Error('Por favor, insira ao menos 1 item ao pedido');
-      }
-      const response = await createOrder(orderId, orderItem, clientName, waiterId, token);
-      const orderData = await response.json();
-
-      if (response.status === 201) {
-        toast.success('Pedido enviado à cozinha com sucesso!');
-        setOrderItem([]);
-        setName('');
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-*/
   const isValidOrder = () => {
     if (clientName === '') {
       throw new Error('Por favor, insira o nome do cliente');
@@ -130,23 +105,23 @@ function Menu() {
     }
   };
   return (
-    <section className="bodyMenu">
-      <header className="imagensHeader">
+    <section className={styles.bodyMenu}>
+      <header className={styles.headerImages}>
         <LogoutButton />
-        <img className="logoMenu" src={Logo} alt="logoBurguerQueen" />
+        <img className={styles.logoMenu} src={Logo} alt="logoBurguerQueen" />
       </header>
-      <div className="mainMenu">
-        <div className="btnProntos">
+      <div className={styles.mainMenu}>
+        <div className={styles.buttonReady}>
           <CheckIcon />
         </div>
-        <div className="options">
+        <div className={styles.options}>
           <InfoBoxTitle item="Café da manhã" onClick={() => filteredCategory('Café da manhã')} />
           <InfoBoxTitle item="Almoço" onClick={() => filteredCategory('Almoço')} />
           <InfoBoxTitle item="Bebidas" onClick={() => filteredCategory('Bebidas')} />
           <InfoBoxTitle item="Sobremesas" onClick={() => filteredCategory('Sobremesas')} />
         </div>
 
-        <div className="products">
+        <div className={styles.products}>
           {showProducts
           && filteredProducts.map((product) => (
             <InfoBox
@@ -162,11 +137,11 @@ function Menu() {
         </div>
       </div>
 
-      <div className="pedidosDesktop">
-        <img className="logoMenuSegunda" src={Logo} alt="logoBurguerQueen" />
-        <div className="pedidos">
-          <section className="resumoPedido">
-            <p className="resumo">Resumo do Pedido:</p>
+      <div className={styles.desktopOrders}>
+        <img className={styles.logoMenuDesktop} src={Logo} alt="logoBurguerQueen" />
+        <div className={styles.orders}>
+          <section className={styles.ordersResume}>
+            <p className={styles.resume}>Resumo do Pedido:</p>
             <Input
               value={clientName}
               whenChanged={(value) => setName(value)}

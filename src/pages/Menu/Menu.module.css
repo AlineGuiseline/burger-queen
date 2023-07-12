@@ -4,7 +4,7 @@
     --fonte: 'Montserrat', sans-serif;
 }
 
-.imagensHeader{
+.headerImages{
     display: flex;
     align-items: center;
 }
@@ -13,7 +13,7 @@
     width: 150px;
 }
 
-.logoMenuSegunda{
+.logoMenuDesktop{
     display: none;
 }
 
@@ -36,7 +36,7 @@
     gap:20px;
 }
 
-.btnProntos{
+.buttonReady{
     align-self: flex-end;
 }
 
@@ -58,7 +58,7 @@
 
 }
 
-.pedidos{
+.orders{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,33 +71,20 @@
     margin-bottom: 20px;
 }
 
-.resumoTitulo{
-    display: flex;
-}
-
-.resumoPedido{
+.ordersResume{
     align-self: flex-start;
     padding: 10px;
 }
 
-.resumo{
+.resume{
     font-size: 1.2em;
     font-family: var(--fonte);
     color: var(--azulEscuro);
 }
 
-.total, .pedidoItem{
+.total{
     font-family: var(--fonte);
     font-size: 1em;
-}
-
-.pedidoItem{
-    border: 1px solid #358f84;
-    padding: 15px;
-    border-radius: 30px;
-    width: 350px;
-    height: 50px;
-    margin: 5px;
 }
 
 
@@ -121,19 +108,19 @@
         justify-content: center;
     }
 
-    .logoMenuSegunda{
+    .logoMenuDesktop{
         width: 150px;
         margin-bottom:20px;
         display: block;
     }
 
 
-    .pedidos{
+    .orders{
         max-width: 400px;
         min-height: 70vh;
     }
 
-    .pedidosDesktop{
+    .desktopOrders{
         display: flex;
         flex-direction: column;
         align-items: center;

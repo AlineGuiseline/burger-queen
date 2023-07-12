@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './AdminInfoBox.module.css';
 
 function AdminInfoBox(props) {
-  const whenTyped = (evento) => {
-    props.whenChanged(evento.target.value);
+  const whenTyped = (event) => {
+    props.whenChanged(event.target.value);
   };
 
   return (

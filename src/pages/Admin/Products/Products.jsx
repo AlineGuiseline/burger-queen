@@ -14,7 +14,7 @@ import Paragraph from '../../../components/Paragraph/Paragraph';
 import ButtonAdmin from '../components/Button/ButtonAdmin';
 
 import Logo from '../../../assets/logo.png';
-import './Products.css';
+import styles from './Products.module.css';
 
 function Products() {
   const navigate = useNavigate();
@@ -129,15 +129,15 @@ function Products() {
       <ToastContainer
         autoClose={1500}
       />
-      <header className="headerP">
+      <header className={styles.header}>
         <LogoutButton />
-        <img className="logoProducts" src={Logo} alt="logo burguer queen" />
+        <img className={styles.logoProducts} src={Logo} alt="logo burguer queen" />
       </header>
-      <div className="btnVoltar">
+      <div className={styles.btnVoltar}>
         <Button onClick={handleBack}> Voltar </Button>
       </div>
-      <main className="mainProducts">
-        <div className="inputs">
+      <main className={styles.mainProducts}>
+        <div className={styles.inputs}>
           <Paragraph>ADICIONAR NOVO</Paragraph>
           <AdminInfoBox
             label="Produto:"
@@ -160,7 +160,7 @@ function Products() {
             whenChanged={(value) => setProductType(value)}
             name={productType}
           />
-          <div className="buttons">
+          <div className={styles.buttons}>
             <ButtonAdmin
               nome="Salvar"
               onClick={createNewProduct}
@@ -168,11 +168,11 @@ function Products() {
           </div>
         </div>
         {listStock.map((item) => (
-          <div className="inputs" key={item.id}>
+          <div className={styles.inputs} key={item.id}>
             <Paragraph>Nome: {item.name}</Paragraph>
             <Paragraph>Preço: ${item.price}</Paragraph>
             <Paragraph>Tipo: {item.type}</Paragraph>
-            <div className="buttonsP">
+            <div className={styles.buttons}>
               <ButtonAdmin
                 nome="Editar"
                 onClick={() => openModal(item)}
@@ -220,7 +220,7 @@ function Products() {
           />
         </>
         )}
-        <div className="buttonsP">
+        <div className={styles.buttons}>
           <ButtonAdmin
             nome="Salvar"
             onClick={() => changeProduct(selectedProduct)}

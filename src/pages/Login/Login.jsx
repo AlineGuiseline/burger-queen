@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
-import './Login.css';
 import { useNavigate } from 'react-router-dom';
+import styles from './Login.module.css';
 import Logo from '../../assets/logo.png';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
@@ -41,10 +41,10 @@ function Login() {
   };
 
   return (
-    <div className="bodyHome">
-      <section className="container">
-        <img alt="logo-imagem" src={Logo} className="logoImage" />
-        <form className="form" onSubmit={signIn}>
+    <div className={styles.bodyHome}>
+      <section className={styles.container}>
+        <img alt="logo-imagem" src={Logo} className={styles.logoImage} />
+        <form className={styles.form} onSubmit={signIn}>
           <Input
             label="E-mail"
             type="email"

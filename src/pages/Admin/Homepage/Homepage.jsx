@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Logo from '../../../assets/logo.png';
 import LogoutButton from '../../../components/LogoutButton/LogoutButton';
 import InfoBoxTitle from '../../../components/InfoBoxTitle/InfoBoxTitle';
-import './Homepage.css';
+import styles from './Homepage.module.css';
 
 function Homepage() {
   const navigate = useNavigate();
@@ -28,10 +28,10 @@ function Homepage() {
     <section>
       <header>
         <LogoutButton />
-        <img className="logoHomepage" src={Logo} alt="logoBurguerQueen" />
+        <img className={styles.logoHomepage} src={Logo} alt="logoBurguerQueen" />
       </header>
 
-      <main className="mainHomepage">
+      <main className={styles.mainHomepage}>
         <InfoBoxTitle onClick={productsPage} item="Produtos" />
         <InfoBoxTitle onClick={employeesPage} item="Funcionários" />
       </main>

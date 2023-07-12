@@ -12,7 +12,7 @@ import AdminInfoBox from '../components/AdminInfoBox/AdminInfoBox';
 import Paragraph from '../../../components/Paragraph/Paragraph';
 import ButtonAdmin from '../components/Button/ButtonAdmin';
 import Logo from '../../../assets/logo.png';
-import './Employees.css';
+import styles from './Employees.module.css';
 import { getLocalStorageItem } from '../../../utils/localStorage';
 
 ReactModal.setAppElement('#root');
@@ -128,18 +128,18 @@ function Employees() {
 
   return (
     <section>
-      <header className="headerE">
+      <header className={styles.header}>
         <ToastContainer
           autoClose={1500}
         />
         <LogoutButton />
-        <img className="logoEmployees" src={Logo} alt="logo burger queen" />
+        <img className={styles.logoEmployees} src={Logo} alt="logo burger queen" />
       </header>
-      <div className="btnVoltarE">
+      <div className={styles.buttonBack}>
         <Button onClick={handleBack}> Voltar </Button>
       </div>
-      <main className="mainEmployees">
-        <div className="inputsE">
+      <main className={styles.mainEmployees}>
+        <div className={styles.inputs}>
           <Paragraph>ADICIONAR NOVO</Paragraph>
           <AdminInfoBox
             label="Nome:"
@@ -169,7 +169,7 @@ function Employees() {
             whenChanged={(value) => setEmployeeRole(value)}
             name={employeeRole}
           />
-          <div className="buttons">
+          <div className={styles.buttons}>
             <ButtonAdmin
               nome="Salvar"
               onClick={createEmployee}
@@ -177,11 +177,11 @@ function Employees() {
           </div>
         </div>
         {listEmployees.map((item) => (
-          <div className="inputsE" key={item.id}>
+          <div className={styles.inputs} key={item.id}>
             <Paragraph>Nome: {item.name} </Paragraph>
             <Paragraph>E-mail: {item.email} </Paragraph>
             <Paragraph>Função: {item.role} </Paragraph>
-            <div className="buttons">
+            <div className={styles.buttons}>
               <ButtonAdmin
                 nome="Editar"
                 onClick={() => openModal(item)}
@@ -231,7 +231,7 @@ function Employees() {
           />
         </>
         )}
-        <div className="buttons">
+        <div className={styles.buttons}>
           <ButtonAdmin
             nome="Salvar"
             onClick={() => changeInfo(selectedEmployee)}
