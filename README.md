@@ -22,7 +22,7 @@ Quinto projeto criado durante o bootcamp da Laboratória. O projeto é uma plata
 [6. Primeira tela do administrador: Produtos](#6-primeira-tela-do-administrador-produtos)  
 [7. Segunda tela do administrador: Funcionários](#7-segunda-tela-do-administrador-funcionários)  
 [8. Mensagens de erros](#8-mensagens-de-erros)  
-[9. Considerações técnica9](#9-considerações-técnicas)  
+[9. Considerações técnicas](#9-considerações-técnicas)  
 [10. Contatos](#10-contatos)
 
 ## 1. Histórias de usuários
