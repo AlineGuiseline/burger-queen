@@ -8,6 +8,7 @@ import { showOrders, editOrder } from '../../api/orders';
 import logo from '../../assets/logo.png';
 import LogoutButton from '../../components/LogoutButton/LogoutButton';
 import Paragraph from '../../components/Paragraph/Paragraph';
+import Button from '../../components/Button/Button';
 
 function Kitchen() {
   const [orders, setOrders] = useState([]);
@@ -66,7 +67,11 @@ function Kitchen() {
                 Recebido há {differenceInMinutes(new Date(), new Date(order.dateEntry))} minutos
               </Paragraph>
             </div>
-            <button className={styles.buttonReady} type="submit" onClick={() => changeStatus(order)}>Marcar como Pronto</button>
+            <Button
+              onClick={() => changeStatus(order)}
+            >
+              Marcar como Pronto
+            </Button>
           </div>
         ))}
       </section>
