@@ -4,12 +4,12 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useNavigate } from 'react-router-dom';
 import userLogin from '../../api/users';
-import { setLocalStorageItem } from '../../storage/localStorage';
+import { setLocalStorageItem } from '../../utils/localStorage';
 import Login from './Login';
 
 jest.mock('react-router-dom');
 jest.mock('../../api/users');
-jest.mock('../../storage/localStorage');
+jest.mock('../../utils/localStorage');
 
 it('deve redirecionar admins à tela de Menu ao autenticar com sucesso', async () => {
   const mockUserLogin = {

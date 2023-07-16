@@ -18,7 +18,13 @@ function LogoutButton() {
   };
 
   return (
-    <button type="submit" onClick={handleLogout} className={styles.logoutIcon}><img src={logoutIcon} alt="ícone-logout" /></button>
+    <button
+      type="submit"
+      onClick={handleLogout}
+      className={styles.logoutIcon}
+    >
+      <img src={logoutIcon} alt="ícone-logout" />
+    </button>
   );
 }
 
