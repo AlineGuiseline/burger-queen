@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Input from './Input';
@@ -51,19 +50,3 @@ describe('Input', () => {
     expect(whenChanged).toHaveBeenCalledWith(digitandoSenha);
   });
 });
-
-/*
-it('deve renderizar o campo corretamente com um valor e disparar uma ação ao modificar', () => {
-  const onChange = jest.fn();
-  render(
-    <Input value="valorDigitado" onChange={onChange} />,
-  );
-  const input = screen.getByDisplayValue('valorDigitado');
-  expect(input).toBeInTheDocument();
-
-  const digitando = 'Novo Valor';
-  userEvent.type(input, digitando);
-  expect(onChange).toHaveBeenCalledTimes(digitando.length);
-  expect(onChange).toBeCalledWith(digitando);
-});
-*/
